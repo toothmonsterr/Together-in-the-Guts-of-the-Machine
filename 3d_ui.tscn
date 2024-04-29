@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://btq5ckom4fp7o"]
+
+[ext_resource type="PackedScene" uid="uid://cb8etuk3hhqjb" path="res://assets/UI Monitor/UI Monitor screen.glb" id="1_urg8w"]
+[ext_resource type="PackedScene" uid="uid://m1gr6avl6wcj" path="res://assets/UI Monitor/UI Monitor.glb" id="2_wqkbl"]
+
+[node name="3D UI" type="Node"]
+
+[node name="UI Monitor screen" parent="." instance=ExtResource("1_urg8w")]
+
+[node name="UI Monitor" parent="." instance=ExtResource("2_wqkbl")]
