@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d3co7ydbfm7et"
-path.s3tc="res://.godot/imported/UI Monitor Screen_1.png-97d07c24e53bbee6ea0805568d2b2625.s3tc.ctex"
+uid="uid://clgmh0vetyudo"
+path.s3tc="res://.godot/imported/UI Monitor screen_1.png-3fd1a078a5cdf8dc864a4774974d4787.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://assets/UI Monitor/UI Monitor Screen_1.png"
-dest_files=["res://.godot/imported/UI Monitor Screen_1.png-97d07c24e53bbee6ea0805568d2b2625.s3tc.ctex"]
+source_file="res://assets/UI Monitor/UI Monitor screen_1.png"
+dest_files=["res://.godot/imported/UI Monitor screen_1.png-3fd1a078a5cdf8dc864a4774974d4787.s3tc.ctex"]
 
 [params]
 
@@ -26,7 +26,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=8
-roughness/src_normal="res://assets/UI Monitor/UI Monitor Screen_2.png"
+roughness/src_normal="res://assets/UI Monitor/UI Monitor screen_2.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

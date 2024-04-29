@@ -3,7 +3,7 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://m1gr6avl6wcj"
+uid="uid://cgcod86coe5fg"
 path="res://.godot/imported/UI Monitor.glb-83da287729a44648b2236c3a8d7066e3.scn"
 
 [deps]
@@ -29,59 +29,6 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"meshes": {
-"UI Monitor_monitor_dmg": {
-"generate/lightmap_uv": 0,
-"generate/lods": 2,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
-"save_to_file/enabled": false,
-"save_to_file/make_streamable": "",
-"save_to_file/path": ""
-},
-"UI Monitor_monitor_dmg2": {
-"generate/lightmap_uv": 0,
-"generate/lods": 2,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
-"save_to_file/enabled": false,
-"save_to_file/make_streamable": "",
-"save_to_file/path": ""
-},
-"UI Monitor_monitor_dmg3": {
-"generate/lightmap_uv": 0,
-"generate/lods": 2,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
-"save_to_file/enabled": false,
-"save_to_file/make_streamable": "",
-"save_to_file/path": ""
-},
-"UI Monitor_monitor_dmg4": {
-"generate/lightmap_uv": 0,
-"generate/lods": 2,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
-"save_to_file/enabled": false,
-"save_to_file/make_streamable": "",
-"save_to_file/path": ""
-},
-"UI Monitor_monitor_dmg5": {
-"generate/lightmap_uv": 0,
-"generate/lods": 2,
-"generate/shadow_meshes": 0,
-"lods/normal_merge_angle": 60.0,
-"lods/normal_split_angle": 25.0,
-"save_to_file/enabled": false,
-"save_to_file/make_streamable": "",
-"save_to_file/path": ""
-}
-}
-}
+_subresources={}
 gltf/naming_version=1
 gltf/embedded_image_handling=1

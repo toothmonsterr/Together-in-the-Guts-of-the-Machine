@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cb8etuk3hhqjb"
-path="res://.godot/imported/UI Monitor Screen.glb-16b6cdcac6e9834f21d297117d8f0472.scn"
+uid="uid://dki3cmgdvi5h"
+path="res://.godot/imported/UI Monitor screen.glb-6d7615afe5fbbec053e29b7dd6de5c75.scn"
 
 [deps]
 
-source_file="res://assets/UI Monitor/UI Monitor Screen.glb"
-dest_files=["res://.godot/imported/UI Monitor Screen.glb-16b6cdcac6e9834f21d297117d8f0472.scn"]
+source_file="res://assets/UI Monitor/UI Monitor screen.glb"
+dest_files=["res://.godot/imported/UI Monitor screen.glb-6d7615afe5fbbec053e29b7dd6de5c75.scn"]
 
 [params]
 
@@ -33,7 +33,19 @@ _subresources={
 "materials": {
 "Screen": {
 "use_external/enabled": true,
-"use_external/path": "res://materials/Screen.tres"
+"use_external/path": "res://textureviewport.tres"
+}
+},
+"meshes": {
+"UI Monitor screen_monitor_screen": {
+"generate/lightmap_uv": 0,
+"generate/lods": 0,
+"generate/shadow_meshes": 0,
+"lods/normal_merge_angle": 60.0,
+"lods/normal_split_angle": 25.0,
+"save_to_file/enabled": true,
+"save_to_file/make_streamable": "",
+"save_to_file/path": ""
 }
 }
 }
