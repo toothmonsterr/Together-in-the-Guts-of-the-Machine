@@ -11,8 +11,14 @@ config_version=5
 [application]
 
 config/name="Together in the Guts of the Machine"
+run/main_scene="res://3d_ui.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=1200
+window/size/viewport_height=900
 
 [editor]
 
