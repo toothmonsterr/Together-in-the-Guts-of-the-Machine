@@ -5,7 +5,6 @@ extends DialogicSubsystem
 signal switched_timeline(info:Dictionary)
 signal jumped_to_label(info:Dictionary)
 signal returned_from_jump(info:Dictionary)
-signal passed_label(info:Dictionary)
 
 
 #region STATE
@@ -13,7 +12,6 @@ signal passed_label(info:Dictionary)
 
 func clear_game_state(clear_flag:=DialogicGameHandler.ClearFlags.FULL_CLEAR) -> void:
 	dialogic.current_state_info['jump_stack'] = []
-	dialogic.current_state_info.erase("last_label")
 
 
 func load_game_state(load_flag:=LoadFlags.FULL_LOAD) -> void:
@@ -23,7 +21,7 @@ func load_game_state(load_flag:=LoadFlags.FULL_LOAD) -> void:
 #endregion
 
 
-#region MAIN METHODS JUMP
+#region MAIN METHODS
 ####################################################################################################
 
 func jump_to_label(label:String) -> void:
@@ -41,7 +39,7 @@ func jump_to_label(label:String) -> void:
 			break
 		if event is DialogicLabelEvent and event.name == label:
 			break
-	dialogic.current_event_idx = idx-1
+	dialogic.current_event_idx = idx
 	jumped_to_label.emit({'timeline':dialogic.current_timeline, 'label':label})
 
 
@@ -59,32 +57,4 @@ func resume_from_last_jump() -> void:
 func is_jump_stack_empty() -> bool:
 	return len(dialogic.current_state_info['jump_stack']) < 1
 
-#endregion
-
-
-#region MAIN MEHTODS LABELS
-####################################################################################################
-
-func _ready() -> void:
-	passed_label.connect(_on_passed_label)
-
-
-func _on_passed_label(info:Dictionary) -> void:
-	dialogic.current_state_info["last_label"] = info
-
-
-## Returns the identifier name of the last passed label
-func get_last_label_identifier() -> String:
-	if not dialogic.current_state_info.has("last_label"):
-		return ""
-
-	return dialogic.current_state_info["last_label"].identifier
-
-
-## Returns the display name of the last passed label (translated if translation are enabled)
-func get_last_label_name() -> String:
-	if not dialogic.current_state_info.has("last_label"):
-		return ""
-
-	return dialogic.current_state_info["last_label"].display_name
 #endregion

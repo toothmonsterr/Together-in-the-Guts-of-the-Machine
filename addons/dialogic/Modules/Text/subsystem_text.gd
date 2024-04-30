@@ -121,11 +121,7 @@ func update_dialog_text(text: String, instant := false, additional := false) -> 
 
 
 	if !instant: dialogic.current_state = dialogic.States.REVEALING_TEXT
-
-	if additional:
-		dialogic.current_state_info['text'] += text
-	else:
-		dialogic.current_state_info['text'] = text
+	dialogic.current_state_info['text'] = text
 
 	for text_node in get_tree().get_nodes_in_group('dialogic_dialog_text'):
 		connect_meta_signals(text_node)
@@ -148,7 +144,7 @@ func update_dialog_text(text: String, instant := false, additional := false) -> 
 	# Reset Auto-Advance temporarily and the No-Skip setting:
 	dialogic.Inputs.auto_advance.enabled_until_next_event = false
 	dialogic.Inputs.auto_advance.override_delay_for_current_event = -1
-	dialogic.Inputs.manual_advance.disabled_until_next_event = false
+	dialogic.Inputs.set_manualadvance(true, true)
 
 	set_text_reveal_skippable(true, true)
 
@@ -161,22 +157,29 @@ func _on_dialog_text_finished() -> void:
 
 ## Updates the visible name on all name labels nodes.
 ## If a name changes, the [signal speaker_updated] signal is emitted.
-func update_name_label(character:DialogicCharacter):
+func update_name_label(character:DialogicCharacter) -> void:
 	var character_path := character.resource_path if character else ""
-	var current_character_path: String = dialogic.current_state_info.get("speaker", "")
+	var current_character_path: String = dialogic.current_state_info.get('character', "")
 
 	if character_path != current_character_path:
 		dialogic.current_state_info['speaker'] = character_path
 		speaker_updated.emit(character)
 
-	var name_label_text := get_character_name_parsed(character)
-
 	for name_label in get_tree().get_nodes_in_group('dialogic_name_label'):
-		name_label.text = name_label_text
+
 		if character:
+			var translated_display_name := character.get_display_name_translated()
+
+			if dialogic.has_subsystem('VAR'):
+				name_label.text = dialogic.VAR.parse_variables(translated_display_name)
+			else:
+				name_label.text = translated_display_name
+
 			if !'use_character_color' in name_label or name_label.use_character_color:
 				name_label.self_modulate = character.color
+
 		else:
+			name_label.text = ''
 			name_label.self_modulate = Color(1,1,1,1)
 
 
@@ -189,8 +192,6 @@ func update_typing_sound_mood(mood:Dictionary = {}) -> void:
 func show_textbox(instant:=false) -> void:
 	var emitted := instant
 	for text_node in get_tree().get_nodes_in_group('dialogic_dialog_text'):
-		if not text_node.enabled:
-			continue
 		if !text_node.textbox_root.visible and !emitted:
 			animation_textbox_show.emit()
 			text_node.textbox_root.show()
@@ -396,36 +397,8 @@ func _ready():
 		_autopauses[RegEx.create_from_string('(?<!(\\[|\\{))['+i+'](?!([\\w\\s]*!?[\\]\\}]|$))')] = autopause_data[i]
 
 
-## Parses the character's display_name and returns the text that
-## should be rendered. Note that characters may have variables in their
-## name, therefore this function should be called to evaluate
-## any potential variables in a character's name.
-func get_character_name_parsed(character:DialogicCharacter) -> String:
-	if character:
-		var translated_display_name := character.get_display_name_translated()
-		if dialogic.has_subsystem('VAR'):
-			return dialogic.VAR.parse_variables(translated_display_name)
-		else:
-			return translated_display_name
-	return ""
-
-
-## Returns the [class DialogicCharacter] of the current speaker.
-## If there is no current speaker or the speaker is not found, returns null.
 func get_current_speaker() -> DialogicCharacter:
-	var speaker_path: String = dialogic.current_state_info.get("speaker", "")
-
-	if speaker_path.is_empty():
-		return null
-
-	var speaker_resource := load(speaker_path)
-
-	if speaker_resource == null:
-		return null
-
-	var speaker_character := speaker_resource as DialogicCharacter
-
-	return speaker_character
+	return (load(dialogic.current_state_info.get('speaker', "")) as DialogicCharacter)
 
 
 func _update_user_speed(user_speed:float) -> void:

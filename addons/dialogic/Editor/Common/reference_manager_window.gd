@@ -54,39 +54,27 @@ func add_ref_change(old_name:String, new_name:String, type:Types, where:=Where.T
 			if '<replace>' in old_name:
 				regexes = [old_name]
 			else:
-				regexes = [
-					r'(?<replace>%s)' % old_name.replace('/', '\\/')
-					]
+				regexes = ['(?<replace>'+old_name.replace('/', '\\/')+')']
 				if !case_sensitive:
 					regexes[0] = '(?i)'+regexes[0]
 				if whole_words:
 					regexes = ['\\b'+regexes[0]+'\\b']
 
 		Types.VARIABLE:
-			regexes = [
-				r'{(?<replace>\s*%s\s*)}' 			% old_name.replace("/", "\\/"),
-				r'var\s*=\s*"(?<replace>\s*%s\s*)"' % old_name.replace("/", "\\/")
-				]
+			regexes = ['{(?<replace>\\s*'+old_name.replace('/', '\\/')+'\\s*)}', 'var\\s*=\\s*"(?<replace>\\s*'+old_name.replace('/', '\\/')+'\\s*)"']
 			category_name = "Variables"
 
 		Types.PORTRAIT:
-			regexes = [
-				r'(?m)^[^:(\n]*\((?<replace>%s)\)' 			% old_name.replace('/', '\\/'),
-				r'\[\s*portrait\s*=(?<replace>\s*%s\s*)\]' 	% old_name.replace('/', '\\/')
-				]
+			regexes = ['(?m)^[^:(]*\\((?<replace>'+old_name.replace('/', '\\/')+')\\)', '\\[\\s*portrait\\s*=(?<replace>\\s*'+old_name.replace('/', '\\/')+'\\s*)\\]']
 			category_name = "Portraits by "+character_names[0]
 
 		Types.CHARACTER_NAME:
 			# for reference: ((join|leave|update) )?(?<replace>NAME)(?!\B)(?(1)|(?!([^:\n]|\\:)*(\n|$)))
-			regexes = [
-				r'((join|leave|update) )?(?<replace>%s)(?!\B)(?(1)|(?!([^:\n]|\\:)*(\n|$)))' % old_name
-				]
+			regexes = ['((join|leave|update) )?(?<replace>'+old_name+')(?!\\B)(?(1)|(?!([^:\\n]|\\\\:)*(\\n|$)))']
 			category_name = "Renamed Character Files"
 
 		Types.TIMELINE_NAME:
-			regexes = [
-				r'timeline ?= ?" ?(?<replace>%s) ?"' % old_name
-				]
+			regexes = ['timeline ?= ?" ?(?<replace>'+old_name+') ?"']
 			category_name = "Renamed Timeline Files"
 
 	if where != Where.BY_CHARACTER:

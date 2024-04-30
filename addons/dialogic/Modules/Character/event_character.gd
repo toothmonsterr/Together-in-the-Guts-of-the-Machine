@@ -72,8 +72,7 @@ func _execute() -> void:
 		Actions.JOIN:
 			if character:
 				if dialogic.has_subsystem('History') and !dialogic.Portraits.is_character_joined(character):
-					var character_name_text := dialogic.Text.get_character_name_parsed(character)
-					dialogic.History.store_simple_history_entry(character_name_text + " joined", event_name, {'character': character_name_text, 'mode':'Join'})
+					dialogic.History.store_simple_history_entry(character.display_name + " joined", event_name, {'character': character.display_name, 'mode':'Join'})
 
 				var final_animation_length: float = animation_length
 
@@ -106,8 +105,7 @@ func _execute() -> void:
 
 			elif character:
 				if dialogic.has_subsystem('History') and dialogic.Portraits.is_character_joined(character):
-					var character_name_text := dialogic.Text.get_character_name_parsed(character)
-					dialogic.History.store_simple_history_entry(character_name_text+" left", event_name, {'character': character_name_text, 'mode':'Leave'})
+					dialogic.History.store_simple_history_entry(character.display_name+" left", event_name, {'character': character.display_name, 'mode':'Leave'})
 
 				await dialogic.Portraits.leave_character(
 					character,
@@ -389,7 +387,7 @@ func build_event_editor() -> void:
 			'placeholder' 			: 'Default',
 			'enable_pretty_name' 	: true},
 			'should_show_animation_options()')
-	add_body_edit('animation_length', ValueType.NUMBER, {'left_text':'Length:', 'suffix':'s'},
+	add_body_edit('animation_length', ValueType.NUMBER, {'left_text':'Length:'},
 			'should_show_animation_options() and !animation_name.is_empty()')
 	add_body_edit('animation_wait', ValueType.BOOL, {'left_text':'Await end:'},
 			'should_show_animation_options() and !animation_name.is_empty()')
@@ -438,8 +436,6 @@ func get_portrait_suggestions(search_text:String) -> Dictionary:
 		suggestions["Don't Change"] = {'value':'', 'editor_icon':["GuiRadioUnchecked", "EditorIcons"]}
 	if action == Actions.JOIN:
 		suggestions["Default portrait"] = {'value':'', 'editor_icon':["GuiRadioUnchecked", "EditorIcons"]}
-	if "{" in search_text:
-		suggestions[search_text] = {'value':search_text, 'editor_icon':["Variant", "EditorIcons"]}
 	if character != null:
 		for portrait in character.portraits:
 			suggestions[portrait] = {'value':portrait, 'icon':icon.duplicate()}

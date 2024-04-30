@@ -59,8 +59,6 @@ static func add_resource_to_directory(file_path:String, directory:Dictionary) ->
 	return directory
 
 
-## Returns the unique identifier for the given resource path.
-## Returns an empty string if no identifier was found.
 static func get_unique_identifier(file_path:String) -> String:
 	var identifier: String = get_directory(file_path.get_extension()).find_key(file_path)
 	if typeof(identifier) == TYPE_STRING:
@@ -68,8 +66,6 @@ static func get_unique_identifier(file_path:String) -> String:
 	return ""
 
 
-## Returns the resource associated with the given unique identifier.
-## The expected extension is needed to use the right directory.
 static func get_resource_from_identifier(identifier:String, extension:String) -> Resource:
 	var path: String = get_directory(extension).get(identifier, '')
 	if ResourceLoader.exists(path):
@@ -106,7 +102,6 @@ static func remove_resource(file_path:String) -> void:
 		key = directory.find_key(file_path)
 	set_directory(file_path.get_extension(), directory)
 
-
 static func is_identifier_unused(extension:String, identifier:String) -> bool:
 	return not identifier in get_directory(extension)
 
@@ -142,7 +137,6 @@ static func update_label_cache() -> void:
 #region EVENT CACHE
 ################################################################################
 
-##  Dialogic keeps a list that has each event once. This allows retrieval of that list.
 static func get_event_cache() -> Array:
 	if not event_cache.is_empty():
 		return event_cache
@@ -156,7 +150,7 @@ static func update_event_cache() -> Array:
 	for indexer in DialogicUtil.get_indexers():
 		# build event cache
 		for event in indexer._get_events():
-			if not ResourceLoader.exists(event):
+			if not FileAccess.file_exists(event):
 				continue
 			if not 'event_end_branch.gd' in event and not 'event_text.gd' in event:
 				event_cache.append(load(event).new())
@@ -168,9 +162,6 @@ static func update_event_cache() -> Array:
 	return event_cache
 
 #endregion
-
-#region SPECIAL RESOURCES
-################################################################################
 
 static func update_special_resources() -> void:
 	special_resources = []
@@ -194,7 +185,7 @@ static func guess_special_resource(type:String, name:String, default:="") -> Str
 			return path
 	return default
 
-#endregion
+
 
 #region HELPERS
 ################################################################################
