@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://btq5ckom4fp7o"]
+[gd_scene load_steps=15 format=3 uid="uid://btq5ckom4fp7o"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Background/dialogic_background.gd" id="1_ridi0"]
 [ext_resource type="Script" path="res://addons/dialogic/Core/DialogicGameHandler.gd" id="2_7dobv"]
 [ext_resource type="PackedScene" uid="uid://cgcod86coe5fg" path="res://assets/UI Monitor/UI Monitor.glb" id="2_wqkbl"]
+[ext_resource type="Script" path="res://scripts/layout.gd" id="3_77w66"]
 [ext_resource type="Texture2D" uid="uid://clgmh0vetyudo" path="res://assets/UI Monitor/UI Monitor screen_1.png" id="3_fjtow"]
 [ext_resource type="Script" path="res://scripts/interact.gd" id="3_rbt33"]
 [ext_resource type="Material" uid="uid://chltao0bb3jyf" path="res://materials/Screen.tres" id="4_1gsf2"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_layout_layer.gd" id="4_8qxb7"]
 [ext_resource type="Texture2D" uid="uid://dfmtpc826a855" path="res://assets/UI Monitor/UI Monitor screen_2.png" id="4_emnw1"]
 
 [sub_resource type="Environment" id="Environment_h7el2"]
@@ -52,7 +53,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_epkn7")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gh1jr"]
-viewport_path = NodePath("2D/SubViewport")
+viewport_path = NodePath("2D")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bk8fl"]
 resource_local_to_scene = true
@@ -66,28 +67,26 @@ ao_texture = ExtResource("3_fjtow")
 
 [node name="3D" type="Node"]
 
-[node name="2D" type="SubViewportContainer" parent="."]
-texture_filter = 1
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="SubViewport" type="SubViewport" parent="2D"]
-handle_input_locally = false
-size = Vector2i(1200, 900)
-render_target_update_mode = 4
-
-[node name="DialogicGameHandler" type="Node" parent="2D/SubViewport"]
-script = ExtResource("2_7dobv")
-
-[node name="DialogicBackground" type="Node" parent="2D/SubViewport"]
-script = ExtResource("1_ridi0")
-
-[node name="Control" type="Control" parent="2D/SubViewport"]
+[node name="Control" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("3_rbt33")
+
+[node name="2D" type="SubViewport" parent="."]
+handle_input_locally = false
+size = Vector2i(1200, 900)
+render_target_update_mode = 4
+
+[node name="DialogicGameHandler" type="Node" parent="2D"]
+script = ExtResource("2_7dobv")
+
+[node name="DialogicLayoutBase" type="Node" parent="2D"]
+script = ExtResource("3_77w66")
+
+[node name="DialogicLayoutLayer" type="Node" parent="2D/DialogicLayoutBase"]
+script = ExtResource("4_8qxb7")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-4.26421e-08, -0.21983, 0.975538, -9.60906e-09, 0.975538, 0.21983, -1, 9.2373e-15, -4.37114e-08, 4.81586, 0.51457, 0.868575)
