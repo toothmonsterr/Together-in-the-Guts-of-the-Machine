@@ -6,14 +6,45 @@
 "custom_info": {
 "sound_mood_default": "",
 "sound_moods": {},
-"style": ""
+"style": "UI"
 },
-"default_portrait": "",
+"default_portrait": "devtest3",
 "description": "",
 "display_name": "Devion",
 "mirror": false,
 "nicknames": [""],
 "offset": Vector2(0, 0),
-"portraits": {},
+"portraits": {
+"devtest1": {
+"export_overrides": {
+"image": "\"res://Characters/Devion/devtest1.png\""
+},
+"ignore_char_scale": false,
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+},
+"devtest2": {
+"export_overrides": {
+"image": "\"res://Characters/Devion/devtest2.png\""
+},
+"ignore_char_scale": false,
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+},
+"devtest3": {
+"export_overrides": {
+"image": "\"res://Characters/Devion/devtest3.png\""
+},
+"ignore_char_scale": false,
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+}
+},
 "scale": 1.0
 }

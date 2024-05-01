@@ -25,6 +25,7 @@ directories/dch_directory={
 "Barren": "res://Characters/Barren/Barren.dch",
 "Console": "res://Characters/Console/Console.dch",
 "Devion": "res://Characters/Devion/Devion.dch",
+"POV": "res://Characters/POV.dch",
 "The Body": "res://Characters/The Body/The Body.dch"
 }
 directories/dtl_directory={
@@ -52,6 +53,7 @@ save/autosave_delay=60.0
 save/encryption_on_exports_only=true
 text/autopauses={}
 portraits/default_portrait=""
+extensions_folder="res://addons/dialogic_additions"
 
 [display]
 

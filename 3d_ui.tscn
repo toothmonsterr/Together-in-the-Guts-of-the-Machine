@@ -1,20 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://btq5ckom4fp7o"]
 
-[ext_resource type="PackedScene" uid="uid://cgcod86coe5fg" path="res://assets/UI Monitor/UI Monitor.glb" id="2_wqkbl"]
 [ext_resource type="Texture2D" uid="uid://clgmh0vetyudo" path="res://assets/UI Monitor/UI Monitor screen_1.png" id="3_fjtow"]
 [ext_resource type="Script" path="res://scripts/interact.gd" id="3_rbt33"]
 [ext_resource type="Material" uid="uid://chltao0bb3jyf" path="res://materials/Screen.tres" id="4_1gsf2"]
 [ext_resource type="Texture2D" uid="uid://dfmtpc826a855" path="res://assets/UI Monitor/UI Monitor screen_2.png" id="4_emnw1"]
-
-[sub_resource type="Environment" id="Environment_h7el2"]
-background_mode = 3
-glow_enabled = true
-glow_strength = 0.26
-glow_bloom = 0.07
-fog_light_color = Color(0.627451, 0.521569, 0.517647, 1)
-volumetric_fog_density = 0.0541
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_avvkr"]
+[ext_resource type="PackedScene" uid="uid://by65mg6e8us6i" path="res://assets/UI Monitor/close up/UI Monitor.glb" id="6_7wgrc"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_epkn7"]
 _surfaces = [{
@@ -62,7 +52,17 @@ emission_texture = SubResource("ViewportTexture_gh1jr")
 normal_texture = ExtResource("4_emnw1")
 ao_texture = ExtResource("3_fjtow")
 
-[node name="3D" type="Node"]
+[sub_resource type="Environment" id="Environment_h7el2"]
+background_mode = 3
+glow_enabled = true
+glow_strength = 0.26
+glow_bloom = 0.07
+fog_light_color = Color(0.627451, 0.521569, 0.517647, 1)
+volumetric_fog_density = 0.0541
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_avvkr"]
+
+[node name="Main Scene" type="Node"]
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -76,30 +76,31 @@ handle_input_locally = false
 size = Vector2i(1200, 900)
 render_target_update_mode = 4
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-4.26421e-08, -0.21983, 0.975538, -9.60906e-09, 0.975538, 0.21983, -1, 9.2373e-15, -4.37114e-08, 4.81586, 0.51457, 0.868575)
+[node name="3D" type="Node" parent="."]
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_h7el2")
-camera_attributes = SubResource("CameraAttributesPractical_avvkr")
-
-[node name="Monitor 3D" type="Node" parent="."]
-
-[node name="UI Monitor" parent="Monitor 3D" instance=ExtResource("2_wqkbl")]
-
-[node name="monitor_screen" type="MeshInstance3D" parent="Monitor 3D"]
+[node name="monitor_screen" type="MeshInstance3D" parent="3D"]
 transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_xw2xs")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_bk8fl")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, -6.97521e-16, -6.08715e-18, -6.08715e-18, -0.0174524, 0.999848, -6.97521e-16, -0.999848, -0.0174524, 3.71155, 7.6017, 0)
+[node name="UI Monitor2" parent="3D" instance=ExtResource("6_7wgrc")]
+
+[node name="Camera3D" type="Camera3D" parent="3D"]
+transform = Transform3D(-4.25132e-08, -0.23253, 0.972589, -1.01642e-08, 0.972589, 0.23253, -1, 1.15689e-14, -4.37113e-08, 6.81177, 1.03782, 0.860024)
+fov = 43.425
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="3D"]
+environment = SubResource("Environment_h7el2")
+camera_attributes = SubResource("CameraAttributesPractical_avvkr")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="3D"]
+transform = Transform3D(1, -6.97521e-16, -6.08719e-18, -6.08715e-18, -0.0174524, 0.999848, -6.97521e-16, -0.999848, -0.0174524, 3.71155, 7.6017, 0)
 light_energy = 5.755
 spot_range = 12.1344
 spot_angle = 33.0068
 
-[node name="Screen Light" type="OmniLight3D" parent="."]
+[node name="Screen Light" type="OmniLight3D" parent="3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68658, 0, 0.968005)
 layers = 2
 light_energy = 6.64
