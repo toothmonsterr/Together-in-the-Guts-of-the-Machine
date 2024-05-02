@@ -1,0 +1,19 @@
+[history action="resume"]
+Console (empty): > LOADING VIEW ...\
+> ...\
+> ...
+player (Replying): [The screen comes to life with a video feed of someone's bedroom. It looks empty.]\
+[Is anyone even there?]
+[history action="clear"]
+[history action="resume"]
+Console (empty): > SCANNING FOR LIFE ...\
+> ...\
+> ...\
+> ENTITY FOUND.
+player (Replying): [Someone gasps for breath.]\
+[He's being seen again. It's been a while.]\
+[They almost slipped away entirely that time.]\
+[Better keep a close eye on him, if you don't mind.]
+jump 
+Console (empty): > RECORDING ...\
+> ...

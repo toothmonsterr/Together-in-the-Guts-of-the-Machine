@@ -8,7 +8,9 @@ signal continued_revealing_text(new_character : String)
 signal finished_revealing_text()
 enum Alignment {LEFT, CENTER, RIGHT}
 
+#region New Code Region
 @export var enabled := true
+#endregion
 @export var alignment := Alignment.LEFT
 @export var textbox_root : Node = self
 

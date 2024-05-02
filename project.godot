@@ -26,13 +26,15 @@ directories/dch_directory={
 "Console": "res://Characters/Console/Console.dch",
 "Devion": "res://Characters/Devion/Devion.dch",
 "POV": "res://Characters/POV.dch",
-"The Body": "res://Characters/The Body/The Body.dch"
+"The Body": "res://Characters/The Body/The Body.dch",
+"player": "res://Characters/The Player/player.dch"
 }
 directories/dtl_directory={
+"opening": "res://opening.dtl",
 "timeline": "res://timeline.dtl"
 }
-layout/style_list=["res://UI/UI.tres"]
-layout/default_style="res://UI/UI.tres"
+layout/style_list=["res://UI/UI.tres", "res://UI/Console.tres", "res://UI/player.tres"]
+layout/default_style=""
 variables={}
 glossary/default_case_sensitive=true
 text/letter_speed=0.01
@@ -54,6 +56,8 @@ save/encryption_on_exports_only=true
 text/autopauses={}
 portraits/default_portrait=""
 extensions_folder="res://addons/dialogic_additions"
+history/simple_history_enabled=true
+text/autoadvance_enabled=false
 
 [display]
 

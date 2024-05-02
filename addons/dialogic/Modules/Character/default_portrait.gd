@@ -6,7 +6,7 @@ extends DialogicPortrait
 
 @export_group('Main')
 @export_file var image : String = ""
-
+@export var animation := ""
 
 ## Load anything related to the given character and portrait
 func _update_portrait(passed_character:DialogicCharacter, passed_portrait:String) -> void:

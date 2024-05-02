@@ -22,9 +22,12 @@ script = ExtResource("2_61600")
 scene = ExtResource("4_3ybsb")
 overrides = {
 "box_animation_in": "0",
-"box_animation_new_text": "1",
+"box_animation_out": "0",
+"box_color_custom": "Color(1, 1, 1, 0)",
 "box_margin_bottom": "50.0",
-"box_size": "Vector2(800, 150)"
+"box_panel": "\"res://UI/UI_textbox_tex_panel.tres\"",
+"box_size": "Vector2(800, 150)",
+"name_label_box_panel": "\"vn_textbox_name_label_panel.tres\""
 }
 
 [sub_resource type="Resource" id="Resource_7g54k"]
@@ -36,7 +39,9 @@ overrides = {}
 script = ExtResource("1_rhrx1")
 name = "UI"
 base_overrides = {
-"global_font": "\"res://fonts/courier-pixel-monospaced.ttf\""
+"global_bg_color": "Color(0, 0.0352941, 0.0117647, 1)",
+"global_font": "\"res://fonts/courier-pixel-monospaced.ttf\"",
+"global_font_size": "24.0"
 }
 layers = Array[ExtResource("2_61600")]([SubResource("Resource_lyd3p"), SubResource("Resource_4e1j2"), SubResource("Resource_y2qse"), SubResource("Resource_7g54k")])
-metadata/_latest_layer = 2
+metadata/_latest_layer = -1

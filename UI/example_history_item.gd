@@ -1,5 +1,6 @@
 extends Container
 
+
 func get_text_box() -> RichTextLabel:
 	return %TextBox
 
@@ -10,6 +11,7 @@ func get_name_label() -> Label:
 
 func get_icon() -> TextureRect:
 	return %Icon
+
 
 
 func load_info(text:String, character:String = "", character_color: Color =Color(), icon:Texture= null) -> void:

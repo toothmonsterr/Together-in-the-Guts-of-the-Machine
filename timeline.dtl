@@ -1,9 +1,7 @@
 [style name="UI"]
 [background arg="res://assets/Backgrounds/ascii1.png" fade="0.0"]
-join Devion (devtest1) 0
-Devion: TESTING...
-join Devion (devtest2) 1
-Devion: TESTING... 2
-join Devion (devtest3) 2
-Devion: TESTING... 3
+join Devion (Talk Smile/devtalksmile_animated) 0
+Devion: "I've got something dirty on you."
+Barren (empty): ...
+Barren (empty): "Nobody says it like that, Dev."
 [end_timeline]

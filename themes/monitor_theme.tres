@@ -1,6 +1,9 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://giv8mej7eukw"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://giv8mej7eukw"]
 
-[ext_resource type="FontFile" uid="uid://bco2lps5f4m3v" path="res://fonts/courier-pixel-monospaced.ttf" id="1_gg8j6"]
+[ext_resource type="FontFile" uid="uid://ct80pt14tnb76" path="res://fonts/TerminusTTF-Bold-4.49.3.ttf" id="1_mrff1"]
+[ext_resource type="FontFile" uid="uid://bhvfm0p6od747" path="res://fonts/TerminusTTF-Bold-Italic-4.49.3.ttf" id="2_s2cad"]
+[ext_resource type="FontFile" uid="uid://dc812d3jm7t32" path="res://fonts/TerminusTTF-Italic-4.49.3.ttf" id="3_40u5k"]
+[ext_resource type="FontFile" uid="uid://clt4bappi7jed" path="res://fonts/TerminusTTF-4.49.3.ttf" id="4_5xrm5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c6cto"]
 bg_color = Color(0, 0, 0, 1)
@@ -14,10 +17,13 @@ corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
 
 [resource]
-MarginContainer/constants/margin_bottom = 16
-MarginContainer/constants/margin_left = 16
-MarginContainer/constants/margin_right = 16
-MarginContainer/constants/margin_top = 16
+MarginContainer/constants/margin_bottom = 40
+MarginContainer/constants/margin_left = 40
+MarginContainer/constants/margin_right = 40
+MarginContainer/constants/margin_top = 40
 Panel/styles/panel = SubResource("StyleBoxFlat_c6cto")
-RichTextLabel/font_sizes/normal_font_size = 24
-RichTextLabel/fonts/normal_font = ExtResource("1_gg8j6")
+RichTextLabel/font_sizes/normal_font_size = 40
+RichTextLabel/fonts/bold_font = ExtResource("1_mrff1")
+RichTextLabel/fonts/bold_italics_font = ExtResource("2_s2cad")
+RichTextLabel/fonts/italics_font = ExtResource("3_40u5k")
+RichTextLabel/fonts/normal_font = ExtResource("4_5xrm5")
