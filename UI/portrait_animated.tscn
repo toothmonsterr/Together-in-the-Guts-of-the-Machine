@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dhgs3eumn10t6"]
+
+[ext_resource type="Script" path="res://UI/Portrait Layered/DialogicPortraitanim2.gd" id="1_cwpqo"]
+
+[node name="2D" type="Node2D"]
+script = ExtResource("1_cwpqo")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true

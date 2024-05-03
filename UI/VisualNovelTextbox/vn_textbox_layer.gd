@@ -220,3 +220,7 @@ func _apply_export_overrides() -> void:
 	type_sounds.volume_variance = typing_sounds_volume_variance
 	type_sounds.ignore_characters = typing_sounds_ignore_characters
 
+
+
+func _on_dialogic_node_dialog_text_finished_revealing_text() -> void:
+	pass # Replace with function body.

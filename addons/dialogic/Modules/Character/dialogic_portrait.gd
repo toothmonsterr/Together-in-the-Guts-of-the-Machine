@@ -43,6 +43,8 @@ func _get_covered_rect() -> Rect2:
 		var node: Node = get_meta('texture_holder_node')
 		if node is Sprite2D or node is TextureRect:
 			return Rect2(node.position, node.get_rect().size)
+		if node is AnimatedSprite2D:
+			return Rect2(node.position, node.get_scale())
 	return Rect2()
 
 
@@ -50,7 +52,7 @@ func _get_covered_rect() -> Rect2:
 func _set_mirror(mirror:bool) -> void:
 	if has_meta('texture_holder_node') and get_meta('texture_holder_node', null) != null and is_instance_valid(get_meta('texture_holder_node')):
 		var node: Node = get_meta('texture_holder_node')
-		if node is Sprite2D or node is TextureRect:
+		if node is Sprite2D or node is TextureRect or node is AnimatedSprite2D:
 			node.flip_h = mirror
 
 
@@ -73,7 +75,6 @@ func _unhighlight() -> void:
 	pass
 #endregion
 
-
 #region HELPERS
 ################################################################################
 
@@ -89,22 +90,7 @@ func apply_character_and_portrait(passed_character:DialogicCharacter, passed_por
 func apply_texture(node:Node, texture_path:String) -> void:
 	if not character or not character.portraits.has(portrait):
 		return
-
-	if not "texture" in node:
-		return
-
-	node.texture = null
-
-	if not ResourceLoader.exists(texture_path):
-		# This is a leftover from alpha.
-		# Removing this will break any portraits made before alpha-10
-		if ResourceLoader.exists(character.portraits[portrait].get('image', '')):
-			texture_path = character.portraits[portrait].get('image', '')
-		else:
-			return
-
-	node.texture = load(texture_path)
-
+	
 	if node is Sprite2D or node is TextureRect:
 		if node is Sprite2D:
 			node.centered = false
@@ -113,6 +99,9 @@ func apply_texture(node:Node, texture_path:String) -> void:
 			if !is_inside_tree():
 				await ready
 		node.position = node.get_rect().size * Vector2(-0.5, -1)
+	
+	if node is AnimatedSprite2D:
+		node.position = node.get_scale() * Vector2(-0.5,-1)
 
 	set_meta('texture_holder_node', node)
 

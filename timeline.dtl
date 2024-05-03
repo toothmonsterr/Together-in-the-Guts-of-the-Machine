@@ -1,6 +1,6 @@
 [style name="UI"]
 [background arg="res://assets/Backgrounds/ascii1.png" fade="0.0"]
-join Devion (Talk Smile/devtalksmile_animated) 0
+join Devion 0
 Devion: "I've got something dirty on you."
 Barren (empty): ...
 Barren (empty): "Nobody says it like that, Dev."

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="DialogicStyle" load_steps=11 format=3 uid="uid://bau2i86uso68c"]
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=12 format=3 uid="uid://bau2i86uso68c"]
 
 [ext_resource type="PackedScene" uid="uid://ckw8fmgcdflsj" path="res://UI/FullBackground/custom_full_background_layer.tscn" id="1_57rvb"]
+[ext_resource type="PackedScene" uid="uid://v5ge4rc57ore" path="res://UI/DefaultLayoutBase/custom_default_layout_base.tscn" id="1_bcm5l"]
 [ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="1_rhrx1"]
 [ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_61600"]
 [ext_resource type="PackedScene" uid="uid://bwk6efwlsjfo" path="res://UI/5Portraits/custom_vn_portrait_layer.tscn" id="3_01r5s"]
@@ -38,10 +39,11 @@ overrides = {}
 [resource]
 script = ExtResource("1_rhrx1")
 name = "UI"
+base_scene = ExtResource("1_bcm5l")
 base_overrides = {
 "global_bg_color": "Color(0, 0.0352941, 0.0117647, 1)",
 "global_font": "\"res://fonts/courier-pixel-monospaced.ttf\"",
 "global_font_size": "24.0"
 }
 layers = Array[ExtResource("2_61600")]([SubResource("Resource_lyd3p"), SubResource("Resource_4e1j2"), SubResource("Resource_y2qse"), SubResource("Resource_7g54k")])
-metadata/_latest_layer = -1
+metadata/_latest_layer = 2
