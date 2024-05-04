@@ -4,15 +4,15 @@
 
 [resource]
 shader = ExtResource("1_ttnxu")
-shader_parameter/fisheye_strength = 1.0
+shader_parameter/fisheye_strength = 0.9
 shader_parameter/speed = 1.0
 shader_parameter/disortion = 0.7
 shader_parameter/redStrength = 0.8
 shader_parameter/RedSeperationX = 1.0
-shader_parameter/RedSeperationY = 1.5
-shader_parameter/greenStrength = 0.5
+shader_parameter/RedSeperationY = 0.01
+shader_parameter/greenStrength = 2.08165e-12
 shader_parameter/GreenSeperationX = 0.0
-shader_parameter/GreenSeperationY = 2.0
+shader_parameter/GreenSeperationY = 2.08165e-12
 shader_parameter/blueStrength = 0.8
 shader_parameter/BlueSeperationX = 2.0
-shader_parameter/BlueSeperationY = 4.0
+shader_parameter/BlueSeperationY = 0.0
