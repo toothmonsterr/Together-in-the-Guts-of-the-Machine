@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://btq5ckom4fp7o"]
+[gd_scene load_steps=14 format=3 uid="uid://btq5ckom4fp7o"]
 
 [ext_resource type="Texture2D" uid="uid://bi4ac6ucjscsx" path="res://assets/Backgrounds/ascii1.png" id="1_blfi3"]
 [ext_resource type="PackedScene" uid="uid://cgcod86coe5fg" path="res://assets/UI Monitor/UI Monitor.glb" id="2_wqkbl"]
@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://chltao0bb3jyf" path="res://materials/Screen.tres" id="4_1gsf2"]
 [ext_resource type="Texture2D" uid="uid://dfmtpc826a855" path="res://assets/UI Monitor/UI Monitor screen_2.png" id="4_emnw1"]
 [ext_resource type="PackedScene" uid="uid://gm7osrm7xulx" path="res://assets/UI Monitor/UI Monitor close.glb" id="5_gl02h"]
+[ext_resource type="Material" uid="uid://c8voq6qtcjcjt" path="res://materials/CRT_material.tres" id="6_uki3a"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_epkn7"]
 _surfaces = [{
@@ -103,7 +104,19 @@ handle_input_locally = false
 size = Vector2i(1200, 900)
 render_target_update_mode = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="2D"]
+[node name="Node2D" type="Node2D" parent="2D"]
+
+[node name="ColorRect" type="ColorRect" parent="2D/Node2D"]
+material = ExtResource("6_uki3a")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 900.0
+offset_bottom = 1200.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="2D/Node2D"]
 z_index = -1
 texture = ExtResource("1_blfi3")
 centered = false

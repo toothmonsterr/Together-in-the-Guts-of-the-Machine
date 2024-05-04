@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c8voq6qtcjcjt"]
+
+[ext_resource type="Shader" path="res://materials/CRT.gdshader" id="1_c722e"]
+
+[resource]
+shader = ExtResource("1_c722e")
