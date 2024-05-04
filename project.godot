@@ -15,9 +15,6 @@ run/main_scene="res://3d_ui.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
-[autoload]
-
-
 [display]
 
 window/size/viewport_width=1200
