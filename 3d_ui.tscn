@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://bi4ac6ucjscsx" path="res://assets/Backgrounds/ascii1.png" id="1_blfi3"]
 [ext_resource type="PackedScene" uid="uid://cgcod86coe5fg" path="res://assets/UI Monitor/UI Monitor.glb" id="2_wqkbl"]
-[ext_resource type="Texture2D" uid="uid://clgmh0vetyudo" path="res://assets/UI Monitor/UI Monitor Screen_1.png" id="3_fjtow"]
+[ext_resource type="Texture2D" uid="uid://clgmh0vetyudo" path="res://assets/UI Monitor/UI Monitor screen_1.png" id="3_fjtow"]
 [ext_resource type="Material" uid="uid://chltao0bb3jyf" path="res://materials/Screen.tres" id="4_1gsf2"]
-[ext_resource type="Texture2D" uid="uid://dfmtpc826a855" path="res://assets/UI Monitor/UI Monitor Screen_2.png" id="4_emnw1"]
+[ext_resource type="Texture2D" uid="uid://dfmtpc826a855" path="res://assets/UI Monitor/UI Monitor screen_2.png" id="4_emnw1"]
 [ext_resource type="PackedScene" uid="uid://gm7osrm7xulx" path="res://assets/UI Monitor/UI Monitor close.glb" id="5_gl02h"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_epkn7"]
@@ -41,7 +41,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_epkn7")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gh1jr"]
-viewport_path = NodePath("SubViewport")
+viewport_path = NodePath("2D")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bk8fl"]
 resource_local_to_scene = true
@@ -65,45 +65,45 @@ volumetric_fog_density = 0.0541
 
 [node name="Monitor UI" type="Node"]
 
-[node name="Monitor 3D" type="Node" parent="."]
+[node name="3D" type="Node" parent="."]
 
-[node name="UI Monitor" parent="Monitor 3D" instance=ExtResource("2_wqkbl")]
+[node name="UI Monitor" parent="3D" instance=ExtResource("2_wqkbl")]
 visible = false
 
-[node name="monitor_screen" type="MeshInstance3D" parent="Monitor 3D"]
+[node name="monitor_screen" type="MeshInstance3D" parent="3D"]
 transform = Transform3D(1, -6.97574e-16, -1.5246e-23, -1.5246e-23, -4.37114e-08, 1, -6.97574e-16, -1, -4.37114e-08, 0, 0, 0)
 mesh = SubResource("ArrayMesh_xw2xs")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_bk8fl")
 
-[node name="Camera3D" type="Camera3D" parent="Monitor 3D"]
-transform = Transform3D(-4.26421e-08, -0.21983, 0.975538, -9.60906e-09, 0.975538, 0.21983, -1, 9.2373e-15, -4.37114e-08, 4.81586, 0.51457, 0.868575)
+[node name="Camera3D" type="Camera3D" parent="3D"]
+transform = Transform3D(-4.26421e-08, -0.21983, 0.975538, -9.60906e-09, 0.975538, 0.21983, -1, 9.3672e-15, -4.37114e-08, 4.81586, 0.533057, 0.863008)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Monitor 3D"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="3D"]
 environment = SubResource("Environment_h7el2")
 camera_attributes = SubResource("CameraAttributesPractical_avvkr")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="Monitor 3D"]
+[node name="SpotLight3D" type="SpotLight3D" parent="3D"]
 transform = Transform3D(1, -6.97521e-16, -6.08719e-18, -6.08715e-18, -0.0174524, 0.999848, -6.97521e-16, -0.999848, -0.0174524, 3.71155, 7.6017, 0)
 light_energy = 5.755
 spot_range = 12.1344
 spot_angle = 33.0068
 
-[node name="Screen Light" type="OmniLight3D" parent="Monitor 3D"]
+[node name="Screen Light" type="OmniLight3D" parent="3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.68658, 0, 0.968005)
 layers = 2
 light_energy = 6.64
 shadow_enabled = true
 omni_range = 3.81749
 
-[node name="UI Monitor close" parent="Monitor 3D" instance=ExtResource("5_gl02h")]
+[node name="UI Monitor close" parent="3D" instance=ExtResource("5_gl02h")]
 
-[node name="SubViewport" type="SubViewport" parent="."]
+[node name="2D" type="SubViewport" parent="."]
 handle_input_locally = false
 size = Vector2i(1200, 900)
 render_target_update_mode = 4
 
-[node name="Sprite2D" type="Sprite2D" parent="SubViewport"]
+[node name="Sprite2D" type="Sprite2D" parent="2D"]
 z_index = -1
 texture = ExtResource("1_blfi3")
 centered = false
