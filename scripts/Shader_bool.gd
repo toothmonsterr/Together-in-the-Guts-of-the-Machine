@@ -2,7 +2,7 @@
 extends ColorRect
 
 @export var AffectText : bool = true
-@export var darkness : float = 1.0 
+@export_range(0.0, 1.0, 0.1) var darkness := 1.0
 @onready var labeltex := %LabelTex
 @onready var texttex := %TextTex
 
