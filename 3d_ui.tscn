@@ -143,7 +143,7 @@ anchor_bottom = 1.0
 offset_left = -375.0
 offset_top = -300.0
 offset_right = 375.0
-offset_bottom = -85.0
+offset_bottom = -78.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("8_opwfu")
@@ -152,7 +152,8 @@ theme = ExtResource("8_opwfu")
 layout_mode = 2
 theme = ExtResource("8_opwfu")
 
-[node name="NinePatchRect2" type="NinePatchRect" parent="3D/SubViewportContainer/2D/Dialogue/PanelContainer/VBoxContainer"]
+[node name="LabelTex" type="NinePatchRect" parent="3D/SubViewportContainer/2D/Dialogue/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(160, 60)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -163,7 +164,7 @@ patch_margin_top = 16
 patch_margin_right = 8
 patch_margin_bottom = 5
 
-[node name="MarginContainer2" type="MarginContainer" parent="3D/SubViewportContainer/2D/Dialogue/PanelContainer/VBoxContainer/NinePatchRect2"]
+[node name="LabelMargin" type="MarginContainer" parent="3D/SubViewportContainer/2D/Dialogue/PanelContainer/VBoxContainer/LabelTex"]
 material = ExtResource("6_uki3a")
 layout_mode = 0
 offset_right = 156.0
@@ -171,11 +172,12 @@ offset_bottom = 62.0
 size_flags_horizontal = 0
 theme_override_constants/margin_top = 24
 
-[node name="Label" type="Label" parent="3D/SubViewportContainer/2D/Dialogue/PanelContainer/VBoxContainer/NinePatchRect2/MarginContainer2"]
+[node name="Label" type="Label" parent="3D/SubViewportContainer/2D/Dialogue/PanelContainer/VBoxContainer/LabelTex/LabelMargin"]
 layout_mode = 2
 text = "devion"
 
-[node name="NinePatchRect" type="NinePatchRect" parent="3D/SubViewportContainer/2D/Dialogue/PanelContainer/VBoxContainer"]
+[node name="TextTex" type="NinePatchRect" parent="3D/SubViewportContainer/2D/Dialogue/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
 texture = ExtResource("7_rbx44")
@@ -185,14 +187,14 @@ patch_margin_top = 7
 patch_margin_right = 5
 patch_margin_bottom = 30
 
-[node name="MarginContainer" type="MarginContainer" parent="3D/SubViewportContainer/2D/Dialogue/PanelContainer/VBoxContainer/NinePatchRect"]
+[node name="TextMargin" type="MarginContainer" parent="3D/SubViewportContainer/2D/Dialogue/PanelContainer/VBoxContainer/TextTex"]
 layout_mode = 2
 offset_top = 4.0
 offset_right = 750.0
 offset_bottom = 138.0
 theme = ExtResource("8_opwfu")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="3D/SubViewportContainer/2D/Dialogue/PanelContainer/VBoxContainer/NinePatchRect/MarginContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="3D/SubViewportContainer/2D/Dialogue/PanelContainer/VBoxContainer/TextTex/TextMargin"]
 layout_mode = 2
 theme = ExtResource("8_opwfu")
 bbcode_enabled = true
