@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://yomoatwgnrxy"]
+
+[ext_resource type="Shader" path="res://addons/ascii-shader/ascii.gdshader" id="1_8junu"]
+[ext_resource type="Texture2D" uid="uid://d1u05hyqaxhyn" path="res://assets/Textures/sort-Sheet.png" id="2_inamk"]
+[ext_resource type="Texture2D" uid="uid://bi4ac6ucjscsx" path="res://assets/Backgrounds/ascii1.png" id="3_78nm3"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q1r8j"]
+render_priority = 0
+shader = ExtResource("1_8junu")
+shader_parameter/number_of_characters = 254.0
+shader_parameter/character_size = Vector2(6, 8)
+shader_parameter/character_map = ExtResource("2_inamk")
+
+[node name="Background" type="Control"]
+z_index = -3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_q1r8j")
+texture = ExtResource("3_78nm3")
+centered = false
