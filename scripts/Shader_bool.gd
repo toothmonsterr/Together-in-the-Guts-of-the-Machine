@@ -7,8 +7,8 @@ extends ColorRect
 @onready var texttex := %TextTex
 
 
-func darken(darkness, subject):
-	subject.modulate = Color.from_hsv(0,0,darkness,1)
+func darken(val, subject):
+	subject.modulate = Color.from_hsv(0,0,val,1)
 	
 func moveZ():
 	if AffectText:
