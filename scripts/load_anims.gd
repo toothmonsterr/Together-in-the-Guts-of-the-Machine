@@ -1,9 +1,18 @@
 @tool
 extends AnimationPlayer
-var UI : String = "load_in_UI"
-var sprite : String = "load_in_sprite"
+@export_node_path var backgroundNode : NodePath = ""
+@export_node_path var UINode : NodePath = ""
+@export_node_path var spriteNode : NodePath = ""
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	set_autoplay(sprite)
-	animation_set_next (sprite,UI)
+@export_group("Scene Start")
+@export var backgroundAnimation : String = "load_background"
+@export var UIAnimation : String = "load_in_UI"
+@export var spriteAnimation : String = "load_in_sprite"
+
+func scene_start():
+	set_autoplay(backgroundAnimation)
+	animation_set_next(backgroundAnimation,spriteAnimation)
+	animation_set_next(spriteAnimation, UIAnimation)
+
+func _init() -> void:
+	scene_start()
