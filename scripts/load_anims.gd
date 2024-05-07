@@ -9,10 +9,13 @@ extends AnimationPlayer
 @export var UIAnimation : String = "load_in_UI"
 @export var spriteAnimation : String = "load_in_sprite"
 
+signal end_intro
+
 func scene_start():
 	set_autoplay(backgroundAnimation)
 	animation_set_next(backgroundAnimation,spriteAnimation)
 	animation_set_next(spriteAnimation, UIAnimation)
+	emit_signal("end_intro")
 
 func _init() -> void:
 	scene_start()

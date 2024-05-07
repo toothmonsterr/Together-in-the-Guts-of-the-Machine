@@ -7,7 +7,7 @@ extends CanvasLayer
 @export var skip_action: StringName = &"ui_cancel"
 
 @onready var balloon: Control = %Balloon
-@onready var character_label: RichTextLabel = %CharacterLabel
+@onready var character_label: RichTextLabel = %Label
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
 

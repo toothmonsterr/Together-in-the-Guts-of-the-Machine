@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dlbitu3j8wh4t"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://dlbitu3j8wh4t"]
 
 [ext_resource type="FontFile" uid="uid://biklshylteecv" path="res://fonts/pizza-pop.ttf" id="1_j6wjq"]
 [ext_resource type="FontFile" uid="uid://duj0pnf2dl4ud" path="res://fonts/Irisdot-H21-Bold.ttf" id="1_slvv5"]
@@ -7,13 +7,33 @@
 [ext_resource type="FontFile" uid="uid://bco2lps5f4m3v" path="res://fonts/courier-pixel-monospaced.ttf" id="4_anwwy"]
 [ext_resource type="FontFile" uid="uid://d2kiebof833mn" path="res://fonts/ArgentPixelCF-Regular.otf" id="4_id6y6"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_31g00"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_detail = 1
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g80ra"]
+bg_color = Color(0, 0, 0, 1)
+expand_margin_left = 8.0
+expand_margin_top = 8.0
+expand_margin_right = 8.0
+expand_margin_bottom = 8.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xjy8m"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [resource]
+Button/constants/h_separation = 16
+Button/font_sizes/font_size = 18
+Button/fonts/font = ExtResource("1_j6wjq")
+Button/styles/hover = SubResource("StyleBoxFlat_31g00")
+Button/styles/normal = SubResource("StyleBoxFlat_g80ra")
 Label/font_sizes/font_size = 18
 Label/fonts/font = ExtResource("1_j6wjq")
-MarginContainer/constants/margin_bottom = 25
+MarginContainer/constants/margin_bottom = 16
 MarginContainer/constants/margin_left = 16
 MarginContainer/constants/margin_right = 16
 MarginContainer/constants/margin_top = 16
@@ -27,4 +47,4 @@ RichTextLabel/fonts/bold_italics_font = ExtResource("2_rqwcd")
 RichTextLabel/fonts/italics_font = ExtResource("3_nub0e")
 RichTextLabel/fonts/mono_font = ExtResource("4_anwwy")
 RichTextLabel/fonts/normal_font = ExtResource("4_id6y6")
-VBoxContainer/constants/separation = 8
+VBoxContainer/constants/separation = 16
