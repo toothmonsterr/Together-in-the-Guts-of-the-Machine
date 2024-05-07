@@ -39,6 +39,7 @@ signal finished_typing()
 ## The amount of time to pause when exposing a character present in pause_at_characters.
 @export var seconds_per_pause_step: float = 0.3
 
+@export var total_text_lines : int = 3
 
 ## The current line of dialogue.
 var dialogue_line:
@@ -48,6 +49,12 @@ var dialogue_line:
 		text = dialogue_line.text
 	get:
 		return dialogue_line
+
+func scroll_line(to_fit: int):
+	## Get current typed character & line
+	var _char : int = get_visible_characters()
+	var _line : int = get_character_line(_char)
+	scroll_to_line(_line + to_fit)
 
 ## Whether the label is currently typing itself out.
 var is_typing: bool = false:
@@ -147,6 +154,9 @@ func _type_next(delta: float, seconds_needed: float) -> void:
 		visible_characters += 1
 		if visible_characters <= get_total_character_count():
 			spoke.emit(get_parsed_text()[visible_characters - 1], visible_characters - 1, _get_speed(visible_characters))
+			scroll_line(-(total_text_lines-1))
+		if visible_characters == get_total_character_count():
+			scroll_line(visible_characters)
 		# See if there's time to type out some more in this frame
 		seconds_needed += seconds_per_step * (1.0 / _get_speed(visible_characters))
 		if seconds_needed > delta:

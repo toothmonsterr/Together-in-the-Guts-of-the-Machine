@@ -148,7 +148,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -375.0
-offset_top = -320.0
+offset_top = -330.0
 offset_right = 375.0
 offset_bottom = -80.0
 grow_horizontal = 2
@@ -186,7 +186,7 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_nv1mk")
 use_parent_material = true
 layout_mode = 2
 theme = ExtResource("2_pv1dw")
-theme_override_constants/margin_bottom = 40
+theme_override_constants/margin_bottom = 45
 
 [node name="DialogueLabel" parent="Balloon/BoxContaimer/VBoxContainer/TextTex/TextMargin" instance=ExtResource("2_wpul0")]
 unique_name_in_owner = true
@@ -195,7 +195,8 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Dialogue..."
 scroll_active = false
-scroll_following = true
+threaded = true
+total_text_lines = 4
 
 [node name="Sprites" type="Control" parent="Balloon"]
 z_index = -2
