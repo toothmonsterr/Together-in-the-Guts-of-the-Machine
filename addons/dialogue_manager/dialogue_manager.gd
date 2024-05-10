@@ -11,7 +11,6 @@ const DialogueManagerParser = preload("./components/parser.gd")
 const DialogueManagerParseResult = preload("./components/parse_result.gd")
 const ResolvedLineData = preload("./components/resolved_line_data.gd")
 
-
 ## Emitted when a title is encountered while traversing dialogue, usually when jumping from a
 ## goto line
 signal passed_title(title: String)

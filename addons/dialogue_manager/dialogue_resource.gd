@@ -16,6 +16,9 @@ const _DialogueManager = preload("./dialogue_manager.gd")
 ## A list of character names.
 @export var character_names: PackedStringArray = []
 
+## A list of animations in the file.
+@export var animations : PackedStringArray = []
+
 ## The first title in the file.
 @export var first_title: String = ""
 

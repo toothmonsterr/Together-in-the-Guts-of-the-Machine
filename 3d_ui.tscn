@@ -10,7 +10,7 @@
 [ext_resource type="Script" path="res://scripts/Shader_bool.gd" id="7_l0754"]
 [ext_resource type="Texture2D" uid="uid://m0ja7xj4hkck" path="res://assets/UI Elements/rec1_recttex.png" id="7_rbx44"]
 [ext_resource type="Texture2D" uid="uid://by5kfq05pgw8n" path="res://assets/UI Elements/UIlabels.png" id="8_loboa"]
-[ext_resource type="SpriteFrames" uid="uid://dqmrnmx4y3sle" path="res://Characters/Devion/bar_SpriteFrames.tres" id="8_opmya"]
+[ext_resource type="SpriteFrames" uid="uid://dqmrnmx4y3sle" path="res://Characters/Barren/bar_SpriteFrames.tres" id="8_opmya"]
 [ext_resource type="Theme" uid="uid://dlbitu3j8wh4t" path="res://UI/VN_theme.tres" id="8_opwfu"]
 [ext_resource type="Script" path="res://scripts/load_anims.gd" id="8_q2ywu"]
 [ext_resource type="Shader" path="res://materials/load.gdshader" id="11_6xa2j"]

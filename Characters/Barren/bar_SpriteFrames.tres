@@ -25,7 +25,7 @@ animations = [{
 "texture": ExtResource("4_7o4we")
 }],
 "loop": true,
-"name": &"talk frown",
+"name": &"talk_frown",
 "speed": 5.0
 }, {
 "frames": [{
@@ -42,6 +42,6 @@ animations = [{
 "texture": ExtResource("8_23xeq")
 }],
 "loop": true,
-"name": &"talk reg",
+"name": &"talk_reg",
 "speed": 5.0
 }]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=2 format=3 uid="uid://6xelt3ar86sp"]
+
+[ext_resource type="Script" path="res://scripts/character_resource.gd" id="1_08ikk"]
+
+[resource]
+script = ExtResource("1_08ikk")
+id = "BODY"
+name = "The Body"
+active = null
+flags = null
+sprite_path = ""

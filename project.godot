@@ -18,10 +18,13 @@ config/icon="res://icon.svg"
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+Manager="*res://scenes/manager.tscn"
 
 [dialogue_manager]
 
 general/balloon_path="res://addons/dialogue_manager/example_balloon/edited_balloon.tscn"
+general/states=["Globals", "Manager"]
+general/wrap_lines=true
 
 [display]
 
@@ -39,7 +42,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://test.dialogue")
+locale/translations_pot_files=PackedStringArray("res://test.dialogue", "<null>")
 
 [rendering]
 

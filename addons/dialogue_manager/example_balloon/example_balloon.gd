@@ -10,6 +10,9 @@ extends CanvasLayer
 @onready var character_label: RichTextLabel = %Label
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
+@onready var dialogue_sprites : Control = %Sprites
+@onready var dialogue_background : Control = %Background
+@onready var background_2D : AnimatedSprite2D = %Background2D
 
 ## The dialogue resource
 var resource: DialogueResource
@@ -40,10 +43,10 @@ var dialogue_line: DialogueLine:
 			await ready
 
 		dialogue_line = next_dialogue_line
-
+		
 		character_label.visible = not dialogue_line.character.is_empty()
 		character_label.text = tr(dialogue_line.character, "dialogue")
-
+		
 		dialogue_label.hide()
 		dialogue_label.dialogue_line = dialogue_line
 
@@ -53,6 +56,7 @@ var dialogue_line: DialogueLine:
 		# Show our balloon
 		balloon.show()
 		will_hide_balloon = false
+
 
 		dialogue_label.show()
 		if not dialogue_line.text.is_empty():
@@ -73,7 +77,6 @@ var dialogue_line: DialogueLine:
 			balloon.grab_focus()
 	get:
 		return dialogue_line
-
 
 func _ready() -> void:
 	balloon.hide()
@@ -101,6 +104,38 @@ func start(dialogue_resource: DialogueResource, title: String, extra_game_states
 func next(next_id: String) -> void:
 	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
 
+
+### Dialogue commands
+
+func set_background(background_name: String, load_in: bool) -> void:
+	background_2D.sprite_frames = load("res://assets/Backgrounds/background_spriteframes.tres")
+	if background_2D.sprite_frames.has_animation(background_name):
+		pass
+
+
+func add_portrait(character: String, load_in: bool):
+	
+	# Get character variables
+	var sprite_2D = AnimatedSprite2D.new()
+	dialogue_sprites.add_child(sprite_2D)
+	
+	var c = Manager.characters.get(character)
+	var portrait = load(c.sprite_path)
+	var animation = dialogue_line.get_tag_value("anim")
+	
+	# Instatiate the character
+	
+	sprite_2D.set_sprite_frames(portrait)
+	sprite_2D.play(animation)
+	print(portrait)
+
+
+func call_portrait(character: String, method: String) -> void:
+	pass
+
+
+func remove_portrait(character: String) -> void:
+	pass
 
 ### Signals
 
@@ -139,3 +174,7 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 
 func _on_responses_menu_response_selected(response: DialogueResponse) -> void:
 	next(response.next_id)
+
+
+func _on_dialogue_label_spoke(letter: String, letter_index: int, speed: float) -> void:
+	pass # Replace with function body.

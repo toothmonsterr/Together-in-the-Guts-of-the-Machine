@@ -17,7 +17,10 @@ var next_id: String = ""
 ## The character name that is saying this line.
 var character: String = ""
 
-## A dictionary of variable replacements fo the character name. Generally for internal use only.
+## The character resource of the character speaking
+var character_resource: CharacterResource
+
+## A dictionary of variable replacements for the character name. Generally for internal use only.
 var character_replacements: Array[Dictionary] = []
 
 ## The dialogue being spoken.
@@ -66,7 +69,8 @@ func _init(data: Dictionary = {}) -> void:
 
 		match type:
 			_DialogueConstants.TYPE_DIALOGUE:
-				character = data.character
+				character_resource = Manager.characters.get(data.character)
+				character = character_resource.name
 				character_replacements = data.get("character_replacements", [] as Array[Dictionary])
 				text = data.text
 				text_replacements = data.get("text_replacements", [] as Array[Dictionary])
