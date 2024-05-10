@@ -3,11 +3,13 @@
 [ext_resource type="SpriteFrames" uid="uid://mb3t3vvf12so" path="res://Characters/Devion/dev_SpriteFrames.tres" id="1_uikw1"]
 
 [node name="Devion" type="Control"]
+use_parent_material = true
 custom_minimum_size = Vector2(400, 800)
 layout_mode = 3
 anchors_preset = 0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+use_parent_material = true
 position = Vector2(30, 78)
 scale = Vector2(0.5, 0.5)
 sprite_frames = ExtResource("1_uikw1")

@@ -127,13 +127,16 @@ func add_portrait(character: String, load: bool) -> void:
 	var _c : CharacterResource = Manager.characters.get(character)
 	var portrait = load(_c.node_path).instantiate()
 	dialogue_sprites.add_child(portrait)
-	
 
 	if load:
-		# Character appears
-		var _l: Tween = get_tree().create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
-		_l.tween_property(portrait, "position:y", 0.0, 0.5).from(1000.0)
-		await get_tree().create_timer(0.8).timeout
+		#var shader = dialogue_sprites.material
+		#var shader_posY = shader.get_shader_param("Position Y")
+		#print(shader)
+		#print(shader_posY)
+		## Character loads in
+		#var _l := 1.5
+		#shader.set_shader_parameter(shader_posY, _l)
+		pass
 
 
 #func call_portrait(character: String, method: String) -> void:

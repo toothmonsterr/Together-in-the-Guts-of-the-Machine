@@ -25,6 +25,7 @@ Manager="*res://scenes/manager.tscn"
 general/balloon_path="res://addons/dialogue_manager/example_balloon/edited_balloon.tscn"
 general/states=["Globals", "Manager"]
 general/wrap_lines=true
+general/custom_test_scene_path="res://3d_ui.tscn"
 
 [display]
 

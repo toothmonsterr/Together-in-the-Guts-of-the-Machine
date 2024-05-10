@@ -4,6 +4,8 @@ extends ColorRect
 @export var on : bool = true
 @export var AffectText : bool = true
 
+@onready var layer := $".."
+
 func moveZ():
 	if AffectText:
 		set_z_index(1)
