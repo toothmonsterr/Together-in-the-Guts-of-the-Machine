@@ -17,6 +17,23 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("8_jdv51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_xvq0f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ifg0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_mycf2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("1_vej3r")
 }, {
 "duration": 1.0,
@@ -29,27 +46,13 @@ animations = [{
 "texture": ExtResource("4_4gbwb")
 }],
 "loop": true,
-"name": &"talk_frown",
+"name": &"frown",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_xvq0f")
+"texture": ExtResource("12_x51hi")
 }, {
-"duration": 1.0,
-"texture": ExtResource("6_ifg0k")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_mycf2")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_jdv51")
-}],
-"loop": true,
-"name": &"talk_reg",
-"speed": 5.0
-}, {
-"frames": [{
 "duration": 1.0,
 "texture": ExtResource("9_gohqx")
 }, {
@@ -58,11 +61,8 @@ animations = [{
 }, {
 "duration": 1.0,
 "texture": ExtResource("11_india")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_x51hi")
 }],
 "loop": true,
-"name": &"talk_smile",
+"name": &"smile",
 "speed": 5.0
 }]

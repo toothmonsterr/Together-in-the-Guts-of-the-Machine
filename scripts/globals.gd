@@ -1,15 +1,15 @@
 extends Node
 
-const _dev = preload("res://Characters/dev_resource.tres")
-const _bar = preload("res://Characters/bar_resource.tres")
-const _cons = preload("res://Characters/console_resource.tres")
-const _body = preload("res://Characters/body_resource.tres")
+const dev = preload("res://Characters/dev_resource.tres")
+const bar = preload("res://Characters/bar_resource.tres")
+const cons = preload("res://Characters/console_resource.tres")
+const body = preload("res://Characters/body_resource.tres")
 
 const characters := {
-	"DEV":_dev,
-	"BAR":_bar,
-	"CONS":_cons,
-	"BODY":_body}
+	"DEV":dev,
+	"BAR":bar,
+	"CONS":cons,
+	"BODY":body}
 
 var character_dict := {
 	"ID" : "",

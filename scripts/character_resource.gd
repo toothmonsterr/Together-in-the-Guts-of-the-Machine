@@ -6,4 +6,5 @@ extends Resource
 @export var name : String
 @export var active : bool
 @export var flags : Dictionary
+@export_file var node_path : String
 @export_file var sprite_path : String

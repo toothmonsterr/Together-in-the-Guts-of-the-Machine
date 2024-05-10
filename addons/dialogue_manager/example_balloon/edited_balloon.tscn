@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://b10tddcusu6xt" path="res://assets/Backgrounds/animtest/0003.png" id="14_g1mpy"]
 [ext_resource type="Texture2D" uid="uid://dqvm646c4yy4l" path="res://assets/Backgrounds/animtest/0004.png" id="15_kwfjx"]
 [ext_resource type="Texture2D" uid="uid://cy6m5bubf75r6" path="res://assets/Backgrounds/animtest/0005.png" id="16_3phy6"]
+[ext_resource type="Texture2D" uid="uid://bi4ac6ucjscsx" path="res://assets/Backgrounds/ascii1.png" id="16_vw0ln"]
 [ext_resource type="Texture2D" uid="uid://dlurgf2vnv7qe" path="res://assets/Backgrounds/animtest/0006.png" id="17_00tky"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ov65"]
@@ -62,8 +63,6 @@ shader_parameter/border_width = 0.0
 shader_parameter/border_color = Color(0.35, 0.35, 1, 1)
 shader_parameter/maintain_aspect_ratio = true
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ankp3"]
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_poaj7"]
 animations = [{
 "frames": [{
@@ -87,6 +86,19 @@ animations = [{
 }],
 "loop": false,
 "name": &"backgroundtest1",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_vw0ln")
+}],
+"loop": true,
+"name": &"test2",
 "speed": 5.0
 }]
 
@@ -211,15 +223,6 @@ offset_right = -50.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="SpritePlayer" type="AnimationPlayer" parent="Balloon/Sprites"]
-unique_name_in_owner = true
-libraries = {
-"": SubResource("AnimationLibrary_ankp3")
-}
-
-[node name="Sprite2D" type="AnimatedSprite2D" parent="Balloon/Sprites"]
-unique_name_in_owner = true
-
 [node name="Background" type="Control" parent="Balloon"]
 unique_name_in_owner = true
 z_index = -3
@@ -233,7 +236,6 @@ grow_vertical = 2
 [node name="Background2D" type="AnimatedSprite2D" parent="Balloon/Background"]
 unique_name_in_owner = true
 sprite_frames = SubResource("SpriteFrames_poaj7")
-animation = &"backgroundtest1"
 autoplay = "backgroundtest1"
 centered = false
 

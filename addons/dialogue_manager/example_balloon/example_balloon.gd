@@ -10,7 +10,7 @@ extends CanvasLayer
 @onready var character_label: RichTextLabel = %Label
 @onready var dialogue_label: DialogueLabel = %DialogueLabel
 @onready var responses_menu: DialogueResponsesMenu = %ResponsesMenu
-@onready var dialogue_sprites : Control = %Sprites
+@onready var dialogue_sprites : Node = %Sprites
 @onready var dialogue_background : Control = %Background
 @onready var background_2D : AnimatedSprite2D = %Background2D
 
@@ -104,38 +104,51 @@ func start(dialogue_resource: DialogueResource, title: String, extra_game_states
 func next(next_id: String) -> void:
 	self.dialogue_line = await resource.get_next_dialogue_line(next_id, temporary_game_states)
 
-
-### Dialogue commands
-
-func set_background(background_name: String, load_in: bool) -> void:
-	background_2D.sprite_frames = load("res://assets/Backgrounds/background_spriteframes.tres")
-	if background_2D.sprite_frames.has_animation(background_name):
-		pass
+### Mutations
 
 
-func add_portrait(character: String, load_in: bool):
+func set_background(background_name: String, load_in:bool) -> void:
 	
-	# Get character variables
-	var sprite_2D = AnimatedSprite2D.new()
-	dialogue_sprites.add_child(sprite_2D)
+	var sf := background_2D.get_sprite_frames()
+	var anims := sf.get_animation_names()
+	var frames : int = sf.get_frame_count(background_name)
+	if load_in:
+		if anims.has(background_name):
+			background_2D.animation = background_name
+			background_2D.set_frame_and_progress(0,true)
+		else:
+			background_2D.stop()
+	else:
+		background_2D.animation = background_name
+		background_2D.set_frame_and_progress(frames,false)
+
+func add_portrait(character: String, load: bool) -> void:
+	# Instantiate the character
+	var _c : CharacterResource = Manager.characters.get(character)
+	var portrait = load(_c.node_path).instantiate()
+	dialogue_sprites.add_child(portrait)
 	
-	var c = Manager.characters.get(character)
-	var portrait = load(c.sprite_path)
-	var animation = dialogue_line.get_tag_value("anim")
-	
-	# Instatiate the character
-	
-	sprite_2D.set_sprite_frames(portrait)
-	sprite_2D.play(animation)
-	print(portrait)
+
+	if load:
+		# Character appears
+		var _l: Tween = get_tree().create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS)
+		_l.tween_property(portrait, "position:y", 0.0, 0.5).from(1000.0)
+		await get_tree().create_timer(0.8).timeout
 
 
-func call_portrait(character: String, method: String) -> void:
-	pass
-
-
-func remove_portrait(character: String) -> void:
-	pass
+#func call_portrait(character: String, method: String) -> void:
+	#portraits[character].call(method)
+#
+#
+#func remove_portrait(character: String) -> void:
+	#var portrait = portraits[character]
+#
+	## Character leaves
+	#var tween: Tween = get_tree().create_tween().set_pause_mode(Tween.TWEEN_PAUSE_PROCESS).set_ease(Tween.EASE_IN_OUT)
+	#tween.tween_property(portrait, "position:y", 1000.0, 0.5).from(0.0)
+	#await get_tree().create_timer(0.8).timeout
+	#portraits.erase(character)
+	#portrait.queue_free()
 
 ### Signals
 
