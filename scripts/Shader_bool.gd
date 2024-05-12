@@ -6,12 +6,6 @@ extends ColorRect
 
 @onready var layer := $".."
 
-func moveZ():
-	if AffectText:
-		set_z_index(1)
-	else: 
-		set_z_index(0)
-
 func showShader():
 	if on:
 		show()
@@ -19,6 +13,5 @@ func showShader():
 		hide()
 
 func _ready() -> void:
-	moveZ()
 	showShader()
 

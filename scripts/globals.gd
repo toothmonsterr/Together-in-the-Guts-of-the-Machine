@@ -9,7 +9,8 @@ const characters := {
 	"DEV":dev,
 	"BAR":bar,
 	"CONS":cons,
-	"BODY":body}
+	"BODY":body
+}
 
 var character_dict := {
 	"ID" : "",

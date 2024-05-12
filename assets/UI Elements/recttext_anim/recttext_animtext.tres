@@ -1,0 +1,95 @@
+[gd_resource type="AnimatedTexture" load_steps=31 format=3 uid="uid://cjb0q3ai11fbh"]
+
+[ext_resource type="Texture2D" uid="uid://cikyvf8lxp3bw" path="res://assets/UI Elements/recttext_anim/recttex_00.png" id="1_bb4a5"]
+[ext_resource type="Texture2D" uid="uid://csqwdnhmjsf2i" path="res://assets/UI Elements/recttext_anim/recttex_01.png" id="2_c5l4w"]
+[ext_resource type="Texture2D" uid="uid://dv51ck0c25hl7" path="res://assets/UI Elements/recttext_anim/recttex_10.png" id="3_7v8fb"]
+[ext_resource type="Texture2D" uid="uid://cqoxrbw2n3fkh" path="res://assets/UI Elements/recttext_anim/recttex_11.png" id="4_ayebn"]
+[ext_resource type="Texture2D" uid="uid://baynu307t8ei4" path="res://assets/UI Elements/recttext_anim/recttex_12.png" id="5_kndfo"]
+[ext_resource type="Texture2D" uid="uid://culsa1ogn72kp" path="res://assets/UI Elements/recttext_anim/recttex_13.png" id="6_d0ql0"]
+[ext_resource type="Texture2D" uid="uid://bryopjeiy1k2h" path="res://assets/UI Elements/recttext_anim/recttex_14.png" id="7_28ekw"]
+[ext_resource type="Texture2D" uid="uid://dq7hspkmqh3vg" path="res://assets/UI Elements/recttext_anim/recttex_15.png" id="8_e1e12"]
+[ext_resource type="Texture2D" uid="uid://cuni4ccc7atwv" path="res://assets/UI Elements/recttext_anim/recttex_16.png" id="9_w17da"]
+[ext_resource type="Texture2D" uid="uid://chho4avyrpn8a" path="res://assets/UI Elements/recttext_anim/recttex_17.png" id="10_2ud0r"]
+[ext_resource type="Texture2D" uid="uid://c05oxwyo857ly" path="res://assets/UI Elements/recttext_anim/recttex_18.png" id="11_jprvh"]
+[ext_resource type="Texture2D" uid="uid://dc2w3rehefp51" path="res://assets/UI Elements/recttext_anim/recttex_19.png" id="12_1nxw3"]
+[ext_resource type="Texture2D" uid="uid://5bak62btidbi" path="res://assets/UI Elements/recttext_anim/recttex_02.png" id="13_3fr5b"]
+[ext_resource type="Texture2D" uid="uid://yxkrg3d5uuhh" path="res://assets/UI Elements/recttext_anim/recttex_20.png" id="14_npubr"]
+[ext_resource type="Texture2D" uid="uid://bh1llbcdq6ah5" path="res://assets/UI Elements/recttext_anim/recttex_21.png" id="15_t8bb6"]
+[ext_resource type="Texture2D" uid="uid://bcxq7jpka04lt" path="res://assets/UI Elements/recttext_anim/recttex_22.png" id="16_h5tft"]
+[ext_resource type="Texture2D" uid="uid://cau16btcp01di" path="res://assets/UI Elements/recttext_anim/recttex_23.png" id="17_kxf3k"]
+[ext_resource type="Texture2D" uid="uid://b881y0cmyo0w1" path="res://assets/UI Elements/recttext_anim/recttex_24.png" id="18_uxxd6"]
+[ext_resource type="Texture2D" uid="uid://cw2pvrw33nths" path="res://assets/UI Elements/recttext_anim/recttex_25.png" id="19_h8u0u"]
+[ext_resource type="Texture2D" uid="uid://cfkw5ehn54jcw" path="res://assets/UI Elements/recttext_anim/recttex_26.png" id="20_j3hbo"]
+[ext_resource type="Texture2D" uid="uid://c22nagri5ff7j" path="res://assets/UI Elements/recttext_anim/recttex_27.png" id="21_1u2o3"]
+[ext_resource type="Texture2D" uid="uid://crg217oegf0ly" path="res://assets/UI Elements/recttext_anim/recttex_28.png" id="22_lq68y"]
+[ext_resource type="Texture2D" uid="uid://bi8dy0y43sb4m" path="res://assets/UI Elements/recttext_anim/recttex_29.png" id="23_n8n6m"]
+[ext_resource type="Texture2D" uid="uid://8siayrnfkuhr" path="res://assets/UI Elements/recttext_anim/recttex_03.png" id="24_a8ljw"]
+[ext_resource type="Texture2D" uid="uid://d24iixj7odyx7" path="res://assets/UI Elements/recttext_anim/recttex_04.png" id="25_ljgns"]
+[ext_resource type="Texture2D" uid="uid://5i7m6yrbfh11" path="res://assets/UI Elements/recttext_anim/recttex_05.png" id="26_ctd7i"]
+[ext_resource type="Texture2D" uid="uid://db3b3fmd3s4br" path="res://assets/UI Elements/recttext_anim/recttex_06.png" id="27_lxbv7"]
+[ext_resource type="Texture2D" uid="uid://ha2f6abt410y" path="res://assets/UI Elements/recttext_anim/recttex_07.png" id="28_msxhr"]
+[ext_resource type="Texture2D" uid="uid://bhm2vy70ad230" path="res://assets/UI Elements/recttext_anim/recttex_08.png" id="29_j76o5"]
+[ext_resource type="Texture2D" uid="uid://c2lxh71uvw0al" path="res://assets/UI Elements/recttext_anim/recttex_09.png" id="30_g1slx"]
+
+[resource]
+frames = 30
+speed_scale = 0.2
+frame_0/texture = ExtResource("1_bb4a5")
+frame_1/texture = ExtResource("2_c5l4w")
+frame_1/duration = 1.0
+frame_2/texture = ExtResource("13_3fr5b")
+frame_2/duration = 1.0
+frame_3/texture = ExtResource("24_a8ljw")
+frame_3/duration = 1.0
+frame_4/texture = ExtResource("25_ljgns")
+frame_4/duration = 1.0
+frame_5/texture = ExtResource("26_ctd7i")
+frame_5/duration = 1.0
+frame_6/texture = ExtResource("27_lxbv7")
+frame_6/duration = 1.0
+frame_7/texture = ExtResource("28_msxhr")
+frame_7/duration = 1.0
+frame_8/texture = ExtResource("29_j76o5")
+frame_8/duration = 1.0
+frame_9/texture = ExtResource("30_g1slx")
+frame_9/duration = 1.0
+frame_10/texture = ExtResource("3_7v8fb")
+frame_10/duration = 1.0
+frame_11/texture = ExtResource("4_ayebn")
+frame_11/duration = 1.0
+frame_12/texture = ExtResource("5_kndfo")
+frame_12/duration = 1.0
+frame_13/texture = ExtResource("6_d0ql0")
+frame_13/duration = 1.0
+frame_14/texture = ExtResource("7_28ekw")
+frame_14/duration = 1.0
+frame_15/texture = ExtResource("8_e1e12")
+frame_15/duration = 1.0
+frame_16/texture = ExtResource("9_w17da")
+frame_16/duration = 1.0
+frame_17/texture = ExtResource("10_2ud0r")
+frame_17/duration = 1.0
+frame_18/texture = ExtResource("11_jprvh")
+frame_18/duration = 1.0
+frame_19/texture = ExtResource("12_1nxw3")
+frame_19/duration = 1.0
+frame_20/texture = ExtResource("14_npubr")
+frame_20/duration = 1.0
+frame_21/texture = ExtResource("15_t8bb6")
+frame_21/duration = 1.0
+frame_22/texture = ExtResource("16_h5tft")
+frame_22/duration = 1.0
+frame_23/texture = ExtResource("17_kxf3k")
+frame_23/duration = 1.0
+frame_24/texture = ExtResource("18_uxxd6")
+frame_24/duration = 1.0
+frame_25/texture = ExtResource("19_h8u0u")
+frame_25/duration = 1.0
+frame_26/texture = ExtResource("20_j3hbo")
+frame_26/duration = 1.0
+frame_27/texture = ExtResource("21_1u2o3")
+frame_27/duration = 1.0
+frame_28/texture = ExtResource("22_lq68y")
+frame_28/duration = 1.0
+frame_29/texture = ExtResource("23_n8n6m")
+frame_29/duration = 1.0

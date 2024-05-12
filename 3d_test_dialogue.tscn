@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://xuipgv2sylwt"]
+[gd_scene load_steps=15 format=3 uid="uid://dpdr1dkt54ija"]
 
 [ext_resource type="PackedScene" uid="uid://cgcod86coe5fg" path="res://assets/UI Monitor/UI Monitor.glb" id="1_mf205"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/test_scene.gd" id="1_sc0l4"]

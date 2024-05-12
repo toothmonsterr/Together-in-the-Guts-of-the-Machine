@@ -1,19 +1,17 @@
 ~ this_is_a_node_title
 
 do set_background("test2", false)
-
-DEV: [#anim=talk_reg] [[Hi|Hello|Howdy]], this is some dialogue. Here's some lorem ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
+do add_portrait("DEV", true, 2)
+DEV: [wait=2] [[Hi|Hello|Howdy]], this is some dialogue. Here's some lorem ipsum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur
 
 do set_background("backgroundtest1", true)
-do add_portrait("DEV", true)
-
-DEV: [#anim=talk_smile] Here are some choices.
-- First one
-	DEV: You picked the first one.
-- Second one
-	DEV: You picked the second one.
-- Start again => this_is_a_node_title
-- End the conversation => END
-DEV: For more information see the online documentation.
+do change_expression("DEV", "smile")
+DEV: Here I am talking. Blah blah blah.
+DEV: You're a freak, Barren. I hate you! Idiot.
+do change_expression("DEV", "frown")
+BAR: Oh sure. You're talking.
+do stop_anim_textbox()
+do remove_portrait("DEV", true)
+DEV: [wait=2] Close this damn game.
 
 => END 

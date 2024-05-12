@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://bir7syua2kwgh"]
+
+[ext_resource type="SpriteFrames" uid="uid://mb3t3vvf12so" path="res://Characters/Devion/dev_SpriteFrames.tres" id="1_k4q8o"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_n5t12"]
+width = 400
+height = 800
+
+[node name="DEV" type="Control"]
+use_parent_material = true
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -200.0
+offset_top = -800.0
+offset_right = 200.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Mask2D" type="Sprite2D" parent="."]
+clip_children = 1
+texture = SubResource("NoiseTexture2D_n5t12")
+centered = false
+
+[node name="Portrait2D" type="AnimatedSprite2D" parent="Mask2D"]
+use_parent_material = true
+position = Vector2(30, 78)
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("1_k4q8o")
+centered = false

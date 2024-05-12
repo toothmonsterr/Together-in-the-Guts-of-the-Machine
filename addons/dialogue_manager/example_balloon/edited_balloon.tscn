@@ -6,8 +6,9 @@
 [ext_resource type="Shader" path="res://materials/load.gdshader" id="3_em4ob"]
 [ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_nlt2k"]
 [ext_resource type="Texture2D" uid="uid://by5kfq05pgw8n" path="res://assets/UI Elements/UIlabels.png" id="4_f3y74"]
-[ext_resource type="Texture2D" uid="uid://m0ja7xj4hkck" path="res://assets/UI Elements/rec1_recttex.png" id="5_hknmv"]
 [ext_resource type="FontFile" uid="uid://biklshylteecv" path="res://fonts/pizza-pop.ttf" id="5_jc57j"]
+[ext_resource type="StyleBox" uid="uid://bdmn5a1o62ob7" path="res://UI/animated_textbox.tres" id="7_v8xia"]
+[ext_resource type="Texture2D" uid="uid://b7ob7i1fm26nh" path="res://assets/UI Elements/arrow2.png" id="9_hadd3"]
 [ext_resource type="Texture2D" uid="uid://c1r1h80sn7rs4" path="res://assets/Backgrounds/animtest/0001.png" id="12_0rxg6"]
 [ext_resource type="Texture2D" uid="uid://crmt7fhywkgly" path="res://assets/Backgrounds/animtest/0002.png" id="13_iojwb"]
 [ext_resource type="Texture2D" uid="uid://b10tddcusu6xt" path="res://assets/Backgrounds/animtest/0003.png" id="14_g1mpy"]
@@ -41,27 +42,19 @@ texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 region_rect = Rect2(0, 1, 64, 63)
 
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nv1mk"]
-content_margin_left = 0.0
-content_margin_top = 0.0
-content_margin_right = 0.0
-content_margin_bottom = 0.0
-texture = ExtResource("5_hknmv")
-texture_margin_left = 10.0
-texture_margin_top = 10.0
-texture_margin_right = 10.0
-texture_margin_bottom = 32.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bmwiq"]
-shader = ExtResource("3_em4ob")
-shader_parameter/size = 1.0
-shader_parameter/sides = 4
-shader_parameter/rotation = 45.0
-shader_parameter/position_x = 0.5
-shader_parameter/position_y = 0.5
-shader_parameter/border_width = 0.0
-shader_parameter/border_color = Color(0.35, 0.35, 1, 1)
-shader_parameter/maintain_aspect_ratio = true
+[sub_resource type="SpriteFrames" id="SpriteFrames_5olma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_hadd3")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_poaj7"]
 animations = [{
@@ -108,6 +101,7 @@ process_thread_group_order = 0
 process_thread_messages = 0
 layer = 100
 script = ExtResource("1_vref6")
+talk_speed = 0.1
 
 [node name="Balloon" type="Control" parent="."]
 unique_name_in_owner = true
@@ -189,10 +183,11 @@ fit_content = true
 scroll_active = false
 
 [node name="TextTex" type="PanelContainer" parent="Balloon/BoxContaimer/VBoxContainer"]
+unique_name_in_owner = true
 clip_contents = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_nv1mk")
+theme_override_styles/panel = ExtResource("7_v8xia")
 
 [node name="TextMargin" type="MarginContainer" parent="Balloon/BoxContaimer/VBoxContainer/TextTex"]
 use_parent_material = true
@@ -210,11 +205,27 @@ scroll_active = false
 threaded = true
 total_text_lines = 4
 
+[node name="NextContainer" type="PanelContainer" parent="Balloon/BoxContaimer/VBoxContainer/TextTex/TextMargin/DialogueLabel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="NextIndicator" type="AnimatedSprite2D" parent="Balloon/BoxContaimer/VBoxContainer/TextTex/TextMargin/DialogueLabel/NextContainer"]
+unique_name_in_owner = true
+visible = false
+sprite_frames = SubResource("SpriteFrames_5olma")
+frame_progress = 0.790597
+offset = Vector2(-2, 28)
+
 [node name="Sprites" type="Control" parent="Balloon"]
 unique_name_in_owner = true
 z_index = -2
 z_as_relative = false
-material = SubResource("ShaderMaterial_bmwiq")
 custom_minimum_size = Vector2(400, 800)
 layout_mode = 1
 anchors_preset = 7
@@ -223,7 +234,7 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -450.0
-offset_top = -775.0
+offset_top = -800.0
 offset_right = -50.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -236,6 +247,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -21.0
+offset_right = -21.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -247,4 +260,7 @@ centered = false
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
 [connection signal="response_selected" from="Balloon/PanelContainer2/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
-[connection signal="spoke" from="Balloon/BoxContaimer/VBoxContainer/TextTex/TextMargin/DialogueLabel" to="Balloon/Sprites" method="_on_dialogue_label_spoke"]
+[connection signal="finished_typing" from="Balloon/BoxContaimer/VBoxContainer/TextTex/TextMargin/DialogueLabel" to="." method="_on_dialogue_label_finished_typing"]
+[connection signal="paused_typing" from="Balloon/BoxContaimer/VBoxContainer/TextTex/TextMargin/DialogueLabel" to="." method="_on_dialogue_label_paused_typing"]
+[connection signal="skipped_typing" from="Balloon/BoxContaimer/VBoxContainer/TextTex/TextMargin/DialogueLabel" to="." method="_on_dialogue_label_skipped_typing"]
+[connection signal="spoke" from="Balloon/BoxContaimer/VBoxContainer/TextTex/TextMargin/DialogueLabel" to="." method="_on_dialogue_label_spoke"]

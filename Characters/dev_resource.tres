@@ -6,7 +6,7 @@
 script = ExtResource("1_p45kk")
 id = "DEV"
 name = "Devion"
-active = false
+has_portrait = null
 flags = {}
-node_path = "res://Characters/Devion/Devion.tscn"
+node_path = "res://Characters/Devion/DEV.tscn"
 sprite_path = "res://Characters/Devion/dev_SpriteFrames.tres"

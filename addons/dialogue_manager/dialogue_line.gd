@@ -17,6 +17,8 @@ var next_id: String = ""
 ## The character name that is saying this line.
 var character: String = ""
 
+var character_id: String = ""
+
 ## The character resource of the character speaking
 var character_resource: CharacterResource
 
@@ -71,6 +73,7 @@ func _init(data: Dictionary = {}) -> void:
 			_DialogueConstants.TYPE_DIALOGUE:
 				character_resource = Manager.characters.get(data.character)
 				character = character_resource.name
+				character_id = character_resource.id
 				character_replacements = data.get("character_replacements", [] as Array[Dictionary])
 				text = data.text
 				text_replacements = data.get("text_replacements", [] as Array[Dictionary])

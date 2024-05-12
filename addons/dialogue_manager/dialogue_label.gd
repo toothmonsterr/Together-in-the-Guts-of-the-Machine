@@ -5,7 +5,6 @@
 ## A RichTextLabel specifically for use with [b]Dialogue Manager[/b] dialogue.
 class_name DialogueLabel extends RichTextLabel
 
-
 ## Emitted for each letter typed out.
 signal spoke(letter: String, letter_index: int, speed: float)
 
@@ -41,6 +40,10 @@ signal finished_typing()
 
 @export var total_text_lines : int = 3
 
+@onready var next_ind : AnimatedSprite2D = %NextIndicator
+@onready var next_sf : SpriteFrames = next_ind.sprite_frames
+@onready var root := $"../../../../../.."
+
 ## The current line of dialogue.
 var dialogue_line:
 	set(next_dialogue_line):
@@ -72,9 +75,9 @@ var _last_mutation_index: int = -1
 var _waiting_seconds: float = 0
 var _is_awaiting_mutation: bool = false
 
-
 func _process(delta: float) -> void:
 	if self.is_typing:
+		next_ind.hide()
 		# Type out text
 		if visible_ratio < 1:
 			# See if we are waiting
@@ -87,6 +90,8 @@ func _process(delta: float) -> void:
 			# Make sure any mutations at the end of the line get run
 			_mutate_inline_mutations(get_total_character_count())
 			self.is_typing = false
+			next_ind.show()
+			next_ind.play()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -108,16 +113,18 @@ func type_out() -> void:
 	_last_mutation_index = -1
 
 	self.is_typing = true
-
+	
 	# Allow typing listeners a chance to connect
 	await get_tree().process_frame
 
 	if get_total_character_count() == 0:
 		self.is_typing = false
+		
 	elif seconds_per_step == 0:
 		_mutate_remaining_mutations()
 		visible_characters = get_total_character_count()
 		self.is_typing = false
+		
 
 
 ## Stop typing out the text and jump right to the end
@@ -125,6 +132,8 @@ func skip_typing() -> void:
 	_mutate_remaining_mutations()
 	visible_characters = get_total_character_count()
 	scroll_to_line(get_line_count())
+	next_ind.show()
+	next_ind.play()
 	self.is_typing = false
 	skipped_typing.emit()
 
@@ -165,7 +174,6 @@ func _type_next(delta: float, seconds_needed: float) -> void:
 			_waiting_seconds += seconds_needed
 		else:
 			_type_next(delta, seconds_needed)
-
 
 # Get the pause for the current typing position if there is one
 func _get_pause(at_index: int) -> float:
