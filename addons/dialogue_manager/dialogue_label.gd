@@ -6,7 +6,7 @@
 class_name DialogueLabel extends RichTextLabel
 
 ## Emitted for each letter typed out.
-signal spoke(letter: String, letter_index: int, speed: float)
+signal spoke(character: String, letter: String, letter_index: int, speed: float)
 
 ## Emitted when typing paused for a `[wait]`
 signal paused_typing(duration: float)

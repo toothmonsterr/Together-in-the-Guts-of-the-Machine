@@ -6,7 +6,7 @@
 width = 400
 height = 800
 
-[node name="DEV" type="Control"]
+[node name="DEV" type="Control" groups=["Character"]]
 use_parent_material = true
 layout_mode = 3
 anchors_preset = 7

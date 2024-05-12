@@ -9,9 +9,9 @@ do change_expression("DEV", "smile")
 DEV: Here I am talking. Blah blah blah.
 DEV: You're a freak, Barren. I hate you! Idiot.
 do change_expression("DEV", "frown")
+do remove_portrait("DEV", true)
 BAR: Oh sure. You're talking.
 do stop_anim_textbox()
-do remove_portrait("DEV", true)
 DEV: [wait=2] Close this damn game.
-
+BAR: Fine.
 => END 

@@ -18,6 +18,10 @@ extends CanvasLayer
 @onready var text_stylebox : StyleBox = %TextTex.get("theme_override_styles/panel")
 @onready var box_anim : AnimatedTexture = text_stylebox.get("texture")
 
+## Signals
+signal loading()
+signal loaded()
+
 ## The dialogue resource
 var resource: DialogueResource
 
@@ -31,6 +35,8 @@ var is_waiting_for_input: bool = false
 var will_hide_balloon: bool = false
 
 var frame : float = 0.0
+
+var tween : Tween
 
 ## The current line
 var dialogue_line: DialogueLine:
@@ -121,7 +127,6 @@ func stop_anim_textbox() -> void:
 	box_anim.set_pause(true)
 
 func set_background(background_name: String, load_in:bool) -> void:
-	
 	var sf := background_2D.get_sprite_frames()
 	var anims := sf.get_animation_names()
 	var frames : int = sf.get_frame_count(background_name)
@@ -135,24 +140,66 @@ func set_background(background_name: String, load_in:bool) -> void:
 		background_2D.animation = background_name
 		background_2D.set_frame_and_progress(frames,false)
 
-func add_portrait(character: String, load: bool = true, load_speed: float = 1.0):
-	# Instantiate the character
+func reset_offset(node: CanvasItem, show: bool = true):
+	var offsetY : int
+	if show:
+		offsetY = 0
+	else:
+		offsetY = node.texture.get_size()[1]
+	node.set_offset(Vector2(0,offsetY))
+
+func load_anim(node: CanvasItem, load_speed: float = 1.0, startY: int = 0, endY: int = 0, destroy: bool = false) -> void:
+	node.set_offset(Vector2(0,startY))
+	tween = create_tween()
+	tween.tween_property(node, "offset", Vector2(0,endY), load_speed)
+	if destroy:
+		tween.tween_callback(func():
+			node.get_parent().queue_free()
+			)
+	tween.tween_callback(tween.kill)
+
+func skip_load(node: CanvasItem, finalY: int = 0, destroy: bool = false) -> void:
+	if tween:
+		tween.kill()
+	loaded.emit()
+	node.set_offset(Vector2(0,finalY))
+	if destroy:
+		node.queue_free()
+
+func add_portrait(character: String, load: bool = true, load_speed: float = 1.0) -> void:
+	if tween:
+		tween.kill()
+	#Gets the character resource
 	var _c : CharacterResource = Manager.characters.get(character)
+	#Sets character resource has_portrait to true
 	_c.has_portrait = true
+	# Instantiate the character
 	var portrait = load(_c.node_path).instantiate()
+	#Gets the child mask node
 	var mask : Sprite2D = portrait.get_node("Mask2D")
 	#parent to correct place
 	dialogue_sprites.add_child(portrait)
-	
+	#load animation
 	if load:
-		var pos = portrait.get_position()
-		var sizeX = portrait.size.x
-		var sizeY = portrait.size.y
-		mask.set_offset(Vector2(0,-sizeY))
-		var tween = create_tween()
-		tween.tween_property(mask, "offset", Vector2(0,0), load_speed)
+		loading.emit()
+		var sizeY = mask.texture.get_size()[1]
+		load_anim(mask, load_speed, -sizeY, 0)
 	else:
-		mask.set_offset(Vector2(0,0))
+		reset_offset(mask)
+
+##Gets portrait of currently speaking character
+func get_portrait() -> AnimatedSprite2D:
+	var _c : CharacterResource = dialogue_line.character_resource
+	var portrait : AnimatedSprite2D
+	if dialogue_line.character_resource.has_portrait:
+		portrait = get_node("Balloon/Sprites/%s/Mask2D/Portrait2D" % _c.id)
+	else:
+		portrait = null
+	return portrait
+
+func get_mask(obj_name: String) -> Node:
+	var mask : Node2D = get_tree().get_node("../%s/Mask2D" % obj_name)
+	return mask
 
 func change_expression(character: String, expression: String):
 	var _c : CharacterResource = Manager.characters.get(character)
@@ -162,7 +209,6 @@ func change_expression(character: String, expression: String):
 		
 		if _a.has(expression):
 			portrait.set_animation(expression)
-			print("animation got")
 		else:
 			portrait.set_animation("default")
 		
@@ -171,22 +217,18 @@ func change_expression(character: String, expression: String):
 		pass
 
 func remove_portrait(character: String, unload:bool = true, load_speed: float = 1.0) -> void:
+	if tween:
+		tween.kill()
 	var _c : CharacterResource = Manager.characters.get(character)
 	_c.has_portrait = false
 	var portrait : Control = dialogue_sprites.get_node(_c.id)
 	var mask : Sprite2D = portrait.get_node("Mask2D")
 	if unload:
-		var pos = portrait.get_position()
-		var sizeX = portrait.size.x
-		var sizeY = portrait.size.y
-		mask.set_offset(Vector2(0,0))
-		var tween = create_tween()
-		tween.tween_property(mask, "offset", Vector2(0,sizeY), load_speed)
-		portrait.queue_free()
+		loading.emit()
+		var sizeY = mask.texture.get_size()[1]
+		load_anim(mask, load_speed, 0, sizeY, true)
 	else:
-		mask.set_offset(Vector2(0,0))
 		portrait.queue_free()
-	
 
 func remove_all_portraits() -> void:
 	for character in Manager.characters:
@@ -195,13 +237,9 @@ func remove_all_portraits() -> void:
 	for node in portraits:
 		node.queue_free()
 
-func reset_anim() -> void:
-	var _c = dialogue_line.character_resource
-	if _c.has_portrait:
-		var portrait : AnimatedSprite2D = get_node("Balloon/Sprites/%s/Mask2D/Portrait2D" % _c.id)
-		portrait.set_frame(0)
-	else:
-		pass
+func reset_portrait_anim() -> void:
+	var portrait = get_portrait()
+	portrait.set_frame(0)
 
 ### Signals
 
@@ -213,7 +251,6 @@ func _on_mutated(_mutation: Dictionary) -> void:
 			will_hide_balloon = false
 			balloon.hide()
 	)
-
 
 func _on_balloon_gui_input(event: InputEvent) -> void:
 	# See if we need to skip typing of the dialogue
@@ -245,7 +282,7 @@ func _on_dialogue_label_spoke(letter: String, letter_index: int, speed: float) -
 	var _c = dialogue_line.character_resource
 	##Checks if current character has a portrait instantiated
 	if _c.has_portrait:
-		var portrait : AnimatedSprite2D = get_node("Balloon/Sprites/%s/Mask2D/Portrait2D" % _c.id)
+		var portrait : AnimatedSprite2D = get_portrait()
 		var sf : SpriteFrames = portrait.get_sprite_frames()
 		var current_anim := portrait.get_animation()
 		var frames : int = sf.get_frame_count(current_anim)
@@ -264,12 +301,25 @@ func _on_dialogue_label_spoke(letter: String, letter_index: int, speed: float) -
 
 
 func _on_dialogue_label_finished_typing() -> void:
-	reset_anim()
+	if dialogue_line.character_resource.has_portrait:
+		reset_portrait_anim()
+	else:
+		pass
 
 
 func _on_dialogue_label_skipped_typing() -> void:
-	reset_anim()
-
+	
+	if dialogue_line.character_resource.has_portrait:
+		if tween:
+			tween.kill()
+		var mask : Node2D = get_portrait().get_parent()
+		skip_load(mask)
+		reset_portrait_anim()
+	else:
+		pass
 
 func _on_dialogue_label_paused_typing(duration: float) -> void:
-	reset_anim()
+	if dialogue_line.character_resource.has_portrait:
+		reset_portrait_anim()
+	else:
+		pass
