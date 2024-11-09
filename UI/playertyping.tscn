@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://v1ei0vhde37"]
+
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_layout_layer.gd" id="1_cvvba"]
+[ext_resource type="Texture2D" uid="uid://pe3jcbfhxbdi" path="res://assets/UI Elements/arrow.png" id="1_lry8s"]
+[ext_resource type="Script" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="2_38obu"]
+[ext_resource type="Script" path="res://UI/DialogicNode_DialogText_player.gd" id="3_llv4d"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+script = ExtResource("1_cvvba")
+
+[node name="DialogicNode_PortraitContainer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_38obu")
+
+[node name="DialogicNode_DialogText2" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 70.0
+offset_right = 880.0
+offset_bottom = 69.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+scroll_active = false
+scroll_following = true
+script = ExtResource("3_llv4d")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+layout_mode = 0
+offset_left = 16.0
+offset_right = 54.3333
+offset_bottom = 69.0
+texture = ExtResource("1_lry8s")
+expand_mode = 3

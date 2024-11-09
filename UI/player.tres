@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=3 format=3 uid="uid://btg1hulcrs2qm"]
+
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="5_363hh"]
+[ext_resource type="PackedScene" uid="uid://rqa6pyal3m3w" path="res://UI/CustomConsole/customplayer.tscn" id="5_xctix"]
+
+[resource]
+script = ExtResource("5_363hh")
+name = "player"
+base_scene = ExtResource("5_xctix")
+base_overrides = {
+"global_font": "\"res://fonts/TerminusTTF-4.49.3.ttf\""
+}
+layers = Array[Resource("res://addons/dialogic/Resources/dialogic_style_layer.gd")]([])
+metadata/_latest_layer = -1

@@ -1,0 +1,21 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://chltao0bb3jyf"]
+
+[ext_resource type="Texture2D" uid="uid://crekuqe7q21fo" path="res://assets/UI Monitor/UI Monitor screen_0.png" id="1_s8gb0"]
+[ext_resource type="Texture2D" uid="uid://clgmh0vetyudo" path="res://assets/UI Monitor/UI Monitor Screen_1.png" id="2_grdbr"]
+[ext_resource type="Texture2D" uid="uid://clgmh0vetyudo" path="res://assets/UI Monitor/UI Monitor screen_1.png" id="3_nyclg"]
+[ext_resource type="Texture2D" uid="uid://dfmtpc826a855" path="res://assets/UI Monitor/UI Monitor screen_2.png" id="4_n0otc"]
+
+[resource]
+resource_local_to_scene = true
+resource_name = "Screen"
+transparency = 4
+albedo_texture = ExtResource("1_s8gb0")
+metallic = 1.0
+metallic_texture = ExtResource("3_nyclg")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("3_nyclg")
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = ExtResource("4_n0otc")
+ao_enabled = true
+ao_texture = ExtResource("2_grdbr")

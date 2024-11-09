@@ -5,9 +5,8 @@
 ## A RichTextLabel specifically for use with [b]Dialogue Manager[/b] dialogue.
 class_name DialogueLabel extends RichTextLabel
 
-
 ## Emitted for each letter typed out.
-signal spoke(letter: String, letter_index: int, speed: float)
+signal spoke(character: String, letter: String, letter_index: int, speed: float)
 
 ## Emitted when typing paused for a `[wait]`
 signal paused_typing(duration: float)
@@ -28,7 +27,7 @@ signal finished_typing()
 ## Automatically have a brief pause when these characters are encountered.
 @export var pause_at_characters: String = ".?!"
 
-## Don't auto pause if the character after the pause is one of these.
+## Don't auto pause if the charcter after the pause is one of these.
 @export var skip_pause_at_character_if_followed_by: String = ")\""
 
 ## Don't auto pause after these abbreviations (only if "." is in `pause_at_characters`).[br]
@@ -36,11 +35,14 @@ signal finished_typing()
 ## Does not support multi-period abbreviations (ex. "p.m.")
 @export var skip_pause_at_abbreviations: PackedStringArray = ["Mr", "Mrs", "Ms", "Dr", "etc", "eg", "ex"]
 
-## The amount of time to pause when exposing a character present in `pause_at_characters`.
+## The amount of time to pause when exposing a character present in pause_at_characters.
 @export var seconds_per_pause_step: float = 0.3
 
-var _already_mutated_indices: PackedInt32Array = []
+@export var total_text_lines : int = 3
 
+@onready var next_ind : AnimatedSprite2D = %NextIndicator
+@onready var next_sf : SpriteFrames = next_ind.sprite_frames
+@onready var root := $"../../../../../.."
 
 ## The current line of dialogue.
 var dialogue_line:
@@ -50,6 +52,13 @@ var dialogue_line:
 		text = dialogue_line.text
 	get:
 		return dialogue_line
+
+func scroll_line(to_fit: int):
+	## Get current typed character & line
+	var _char : int = get_visible_characters()
+	var _line : int = get_character_line(_char)
+	## Scroll to the current typed character and then forward/back by int to_fit
+	scroll_to_line(_line + to_fit)
 
 ## Whether the label is currently typing itself out.
 var is_typing: bool = false:
@@ -66,9 +75,9 @@ var _last_mutation_index: int = -1
 var _waiting_seconds: float = 0
 var _is_awaiting_mutation: bool = false
 
-
 func _process(delta: float) -> void:
 	if self.is_typing:
+		next_ind.hide()
 		# Type out text
 		if visible_ratio < 1:
 			# See if we are waiting
@@ -81,6 +90,8 @@ func _process(delta: float) -> void:
 			# Make sure any mutations at the end of the line get run
 			_mutate_inline_mutations(get_total_character_count())
 			self.is_typing = false
+			next_ind.show()
+			next_ind.play()
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -100,25 +111,29 @@ func type_out() -> void:
 	_waiting_seconds = 0
 	_last_wait_index = -1
 	_last_mutation_index = -1
-	_already_mutated_indices.clear()
 
 	self.is_typing = true
-
+	
 	# Allow typing listeners a chance to connect
 	await get_tree().process_frame
 
 	if get_total_character_count() == 0:
 		self.is_typing = false
+		
 	elif seconds_per_step == 0:
 		_mutate_remaining_mutations()
 		visible_characters = get_total_character_count()
 		self.is_typing = false
+		
 
 
 ## Stop typing out the text and jump right to the end
 func skip_typing() -> void:
 	_mutate_remaining_mutations()
 	visible_characters = get_total_character_count()
+	scroll_to_line(get_line_count())
+	next_ind.show()
+	next_ind.play()
 	self.is_typing = false
 	skipped_typing.emit()
 
@@ -150,13 +165,15 @@ func _type_next(delta: float, seconds_needed: float) -> void:
 		visible_characters += 1
 		if visible_characters <= get_total_character_count():
 			spoke.emit(get_parsed_text()[visible_characters - 1], visible_characters - 1, _get_speed(visible_characters))
+			scroll_line(-(total_text_lines-1))
+		if visible_characters == get_total_character_count():
+			scroll_to_line(get_line_count())
 		# See if there's time to type out some more in this frame
 		seconds_needed += seconds_per_step * (1.0 / _get_speed(visible_characters))
 		if seconds_needed > delta:
 			_waiting_seconds += seconds_needed
 		else:
 			_type_next(delta, seconds_needed)
-
 
 # Get the pause for the current typing position if there is one
 func _get_pause(at_index: int) -> float:
@@ -185,8 +202,7 @@ func _mutate_inline_mutations(index: int) -> void:
 		# inline mutations are an array of arrays in the form of [character index, resolvable function]
 		if inline_mutation[0] > index:
 			return
-		if inline_mutation[0] == index and not _already_mutated_indices.has(index):
-			_already_mutated_indices.append(index)
+		if inline_mutation[0] == index:
 			_is_awaiting_mutation = true
 			# The DialogueManager can't be referenced directly here so we need to get it by its path
 			await Engine.get_singleton("DialogueManager").mutate(inline_mutation[1], dialogue_line.extra_game_states, true)
@@ -210,7 +226,7 @@ func _should_auto_pause() -> bool:
 	# Ignore "." if it's between two numbers
 	if visible_characters > 3 and parsed_text[visible_characters - 1] == ".":
 		var possible_number: String = parsed_text.substr(visible_characters - 2, 3)
-		if str(float(possible_number)).pad_decimals(1) == possible_number:
+		if str(float(possible_number)) == possible_number:
 			return false
 
 	# Ignore "." if it's used in an abbreviation
@@ -228,3 +244,7 @@ func _should_auto_pause() -> bool:
 		return false
 
 	return parsed_text[visible_characters - 1] in pause_at_characters.split()
+
+
+func _on_spoke(letter: String, letter_index: int, speed: float) -> void:
+	pass # Replace with function body.

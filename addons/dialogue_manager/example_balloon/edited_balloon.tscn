@@ -1,0 +1,275 @@
+[gd_scene load_steps=23 format=3 uid="uid://dabvx443idg2k"]
+
+[ext_resource type="Script" path="res://addons/dialogue_manager/example_balloon/example_balloon.gd" id="1_vref6"]
+[ext_resource type="Theme" uid="uid://dlbitu3j8wh4t" path="res://UI/VN_theme.tres" id="2_pv1dw"]
+[ext_resource type="PackedScene" uid="uid://pvvp526rnlna" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_wpul0"]
+[ext_resource type="Shader" path="res://materials/load.gdshader" id="3_em4ob"]
+[ext_resource type="Script" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_nlt2k"]
+[ext_resource type="Texture2D" uid="uid://by5kfq05pgw8n" path="res://assets/UI Elements/UIlabels.png" id="4_f3y74"]
+[ext_resource type="FontFile" uid="uid://biklshylteecv" path="res://fonts/pizza-pop.ttf" id="5_jc57j"]
+[ext_resource type="StyleBox" uid="uid://bdmn5a1o62ob7" path="res://UI/animated_textbox.tres" id="7_v8xia"]
+[ext_resource type="Texture2D" uid="uid://b7ob7i1fm26nh" path="res://assets/UI Elements/arrow2.png" id="9_hadd3"]
+[ext_resource type="Texture2D" uid="uid://c1r1h80sn7rs4" path="res://assets/Backgrounds/animtest/0001.png" id="12_0rxg6"]
+[ext_resource type="Texture2D" uid="uid://crmt7fhywkgly" path="res://assets/Backgrounds/animtest/0002.png" id="13_iojwb"]
+[ext_resource type="Texture2D" uid="uid://b10tddcusu6xt" path="res://assets/Backgrounds/animtest/0003.png" id="14_g1mpy"]
+[ext_resource type="Texture2D" uid="uid://dqvm646c4yy4l" path="res://assets/Backgrounds/animtest/0004.png" id="15_kwfjx"]
+[ext_resource type="Texture2D" uid="uid://cy6m5bubf75r6" path="res://assets/Backgrounds/animtest/0005.png" id="16_3phy6"]
+[ext_resource type="Texture2D" uid="uid://bi4ac6ucjscsx" path="res://assets/Backgrounds/ascii1.png" id="16_vw0ln"]
+[ext_resource type="Texture2D" uid="uid://dlurgf2vnv7qe" path="res://assets/Backgrounds/animtest/0006.png" id="17_00tky"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ov65"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6d5dj"]
+shader = ExtResource("3_em4ob")
+shader_parameter/size = 1.247
+shader_parameter/sides = 4
+shader_parameter/rotation = 45.0
+shader_parameter/position_x = 0.5
+shader_parameter/position_y = 0.5
+shader_parameter/border_width = 0.0
+shader_parameter/border_color = Color(0.35, 0.35, 1, 1)
+shader_parameter/maintain_aspect_ratio = true
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_clc4h"]
+content_margin_left = 13.0
+content_margin_top = 24.0
+content_margin_right = 12.0
+content_margin_bottom = 16.0
+texture = ExtResource("4_f3y74")
+texture_margin_left = 30.0
+texture_margin_top = 21.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(0, 1, 64, 63)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uwat3"]
+width = 800
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5olma"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_hadd3")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": true,
+"name": &"default",
+"speed": 2.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_poaj7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_0rxg6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_iojwb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_g1mpy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_kwfjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_3phy6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_00tky")
+}],
+"loop": false,
+"name": &"backgroundtest1",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_vw0ln")
+}],
+"loop": true,
+"name": &"test2",
+"speed": 5.0
+}]
+
+[node name="Layer" type="CanvasLayer"]
+process_thread_group = 1
+process_thread_group_order = 0
+process_thread_messages = 0
+layer = 100
+script = ExtResource("1_vref6")
+talk_speed = 0.1
+
+[node name="Balloon" type="Control" parent="." groups=["Balloon", "UI Elements"]]
+unique_name_in_owner = true
+z_as_relative = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1200.0
+offset_bottom = 900.0
+
+[node name="ResponseContainer" type="PanelContainer" parent="Balloon"]
+layout_direction = 2
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -562.48
+offset_top = 30.0
+offset_right = -233.48
+offset_bottom = 180.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7ov65")
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/ResponseContainer" node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(329, 150)
+layout_mode = 2
+theme = ExtResource("2_pv1dw")
+alignment = 2
+script = ExtResource("3_nlt2k")
+response_template = NodePath("ResponseExample")
+
+[node name="ResponseExample" type="Button" parent="Balloon/ResponseContainer/ResponsesMenu"]
+layout_direction = 3
+layout_mode = 2
+size_flags_horizontal = 8
+theme = ExtResource("2_pv1dw")
+text = "Response example"
+
+[node name="BoxContaimer" type="PanelContainer" parent="Balloon"]
+custom_minimum_size = Vector2(750, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -375.0
+offset_top = -330.0
+offset_right = 375.0
+offset_bottom = -80.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_pv1dw")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/BoxContaimer"]
+material = SubResource("ShaderMaterial_6d5dj")
+layout_mode = 2
+theme = ExtResource("2_pv1dw")
+
+[node name="LabelTex" type="PanelContainer" parent="Balloon/BoxContaimer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/panel = SubResource("StyleBoxTexture_clc4h")
+
+[node name="Label" type="RichTextLabel" parent="Balloon/BoxContaimer/VBoxContainer/LabelTex"]
+unique_name_in_owner = true
+use_parent_material = true
+custom_minimum_size = Vector2(112, 2.08165e-12)
+layout_mode = 2
+theme_override_fonts/normal_font = ExtResource("5_jc57j")
+theme_override_font_sizes/normal_font_size = 16
+text = "devion"
+fit_content = true
+scroll_active = false
+
+[node name="Mask2D" type="Sprite2D" parent="Balloon/BoxContaimer/VBoxContainer"]
+clip_children = 1
+texture = SubResource("NoiseTexture2D_uwat3")
+centered = false
+
+[node name="TextTex" type="PanelContainer" parent="Balloon/BoxContaimer/VBoxContainer/Mask2D"]
+unique_name_in_owner = true
+clip_contents = true
+offset_top = 75.0
+offset_right = 750.0
+offset_bottom = 250.0
+size_flags_vertical = 3
+theme_override_styles/panel = ExtResource("7_v8xia")
+
+[node name="TextMargin" type="MarginContainer" parent="Balloon/BoxContaimer/VBoxContainer/Mask2D/TextTex"]
+use_parent_material = true
+layout_mode = 2
+theme = ExtResource("2_pv1dw")
+theme_override_constants/margin_bottom = 45
+
+[node name="DialogueLabel" parent="Balloon/BoxContaimer/VBoxContainer/Mask2D/TextTex/TextMargin" instance=ExtResource("2_wpul0")]
+unique_name_in_owner = true
+clip_contents = false
+layout_mode = 2
+size_flags_vertical = 3
+text = "Dialogue..."
+scroll_active = false
+threaded = true
+total_text_lines = 4
+
+[node name="NextContainer" type="PanelContainer" parent="Balloon/BoxContaimer/VBoxContainer/Mask2D/TextTex/TextMargin/DialogueLabel"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="NextIndicator" type="AnimatedSprite2D" parent="Balloon/BoxContaimer/VBoxContainer/Mask2D/TextTex/TextMargin/DialogueLabel/NextContainer"]
+unique_name_in_owner = true
+visible = false
+sprite_frames = SubResource("SpriteFrames_5olma")
+frame_progress = 0.790597
+offset = Vector2(-2, 28)
+
+[node name="Sprites" type="Control" parent="Balloon" groups=["Sprites", "UI Elements"]]
+unique_name_in_owner = true
+z_index = -2
+z_as_relative = false
+custom_minimum_size = Vector2(400, 800)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -450.0
+offset_top = -800.0
+offset_right = -50.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Background" type="Control" parent="Balloon" groups=["Background", "UI Elements"]]
+unique_name_in_owner = true
+z_index = -3
+z_as_relative = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background2D" type="AnimatedSprite2D" parent="Balloon/Background"]
+unique_name_in_owner = true
+sprite_frames = SubResource("SpriteFrames_poaj7")
+animation = &"backgroundtest1"
+autoplay = "backgroundtest1"
+centered = false
+
+[connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="response_selected" from="Balloon/ResponseContainer/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
+[connection signal="finished_typing" from="Balloon/BoxContaimer/VBoxContainer/Mask2D/TextTex/TextMargin/DialogueLabel" to="." method="_on_dialogue_label_finished_typing"]
+[connection signal="paused_typing" from="Balloon/BoxContaimer/VBoxContainer/Mask2D/TextTex/TextMargin/DialogueLabel" to="." method="_on_dialogue_label_paused_typing"]
+[connection signal="skipped_typing" from="Balloon/BoxContaimer/VBoxContainer/Mask2D/TextTex/TextMargin/DialogueLabel" to="." method="_on_dialogue_label_skipped_typing"]
+[connection signal="spoke" from="Balloon/BoxContaimer/VBoxContainer/Mask2D/TextTex/TextMargin/DialogueLabel" to="." method="_on_dialogue_label_spoke"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3ecdsitw4adk"]
+
+[ext_resource type="Shader" path="res://addons/ascii-shader/ascii.gdshader" id="1"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vgbwm"]
+shader = ExtResource("1")
+shader_parameter/ascii_size = Vector2(8, 16)
+shader_parameter/available_columns = 10
+shader_parameter/max_columns = 16
+
+[sub_resource type="QuadMesh" id="1"]
+flip_faces = true
+
+[node name="AsciiRenderer" type="MeshInstance3D"]
+material_override = SubResource("ShaderMaterial_vgbwm")
+mesh = SubResource("1")

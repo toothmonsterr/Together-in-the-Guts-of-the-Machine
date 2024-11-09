@@ -1,0 +1,14 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bdmn5a1o62ob7"]
+
+[ext_resource type="Texture2D" uid="uid://cjb0q3ai11fbh" path="res://assets/UI Elements/recttext_anim/recttext_animtext.tres" id="1_3tlq5"]
+
+[resource]
+content_margin_left = 0.0
+content_margin_top = 0.0
+content_margin_right = 0.0
+content_margin_bottom = 0.0
+texture = ExtResource("1_3tlq5")
+texture_margin_left = 10.0
+texture_margin_top = 10.0
+texture_margin_right = 10.0
+texture_margin_bottom = 32.0

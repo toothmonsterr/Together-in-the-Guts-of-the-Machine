@@ -1,0 +1,110 @@
+{
+"@path": "res://addons/dialogic/Resources/character.gd",
+"@subpath": NodePath(""),
+"_translation_id": "",
+"color": Color(1, 1, 1, 1),
+"custom_info": {
+"sound_mood_default": "",
+"sound_moods": {},
+"style": "UI"
+},
+"default_portrait": "Talk Smile/devtalksmile_animated",
+"description": "",
+"display_name": "Devion",
+"mirror": false,
+"nicknames": [""],
+"offset": Vector2(0, 0),
+"portraits": {
+"Talk Smile/devtalksmile_0000": {
+"export_overrides": {
+"image": "\"devtalksmile_0000.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Talk Smile/devtalksmile_0001": {
+"export_overrides": {
+"image": "\"res://Characters/Devion/devtalksmile/devtalksmile_0001.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Talk Smile/devtalksmile_0002": {
+"export_overrides": {
+"image": "\"res://Characters/Devion/devtalksmile/devtalksmile_0002.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Talk Smile/devtalksmile_0003": {
+"export_overrides": {
+"image": "\"res://Characters/Devion/devtalksmile/devtalksmile_0003.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+},
+"Talk Smile/devtalksmile_animated": {
+"export_overrides": {
+"default": "\"devtalksmile_0003.png\"",
+"frame1": "\"res://Characters/Devion/devtalksmile/devtalksmile_0000.png\"",
+"frame2": "\"res://Characters/Devion/devtalksmile/devtalksmile_0001.png\"",
+"frame3": "\"res://Characters/Devion/devtalksmile/devtalksmile_0002.png\"",
+"frame4": "\"res://Characters/Devion/devtalksmile/devtalksmile_0003.png\"",
+"frame8": "\"\"",
+"image": "\"\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": "res://UI/portrait_animated.tscn"
+},
+"devtest1": {
+"export_overrides": {
+"image": "\"devtest1.png\""
+},
+"ignore_char_scale": false,
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+},
+"devtest2": {
+"export_overrides": {
+"image": "\"res://Characters/Devion/devtest2.png\""
+},
+"ignore_char_scale": false,
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+},
+"devtest3": {
+"export_overrides": {
+"image": "\"res://Characters/Devion/devtest3.png\""
+},
+"ignore_char_scale": false,
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1.0,
+"scene": ""
+},
+"empty": {
+"export_overrides": {
+"image": "\"res://assets/transparent.png\""
+},
+"mirror": false,
+"offset": Vector2(0, 0),
+"scale": 1,
+"scene": ""
+}
+},
+"scale": 1.0
+}

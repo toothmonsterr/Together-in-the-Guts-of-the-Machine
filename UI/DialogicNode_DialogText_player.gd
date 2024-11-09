@@ -1,0 +1,2 @@
+extends DialogicNode_DialogText
+

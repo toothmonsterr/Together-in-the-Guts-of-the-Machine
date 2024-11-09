@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="DialogicStyle" load_steps=6 format=3 uid="uid://xk1kk0cn14cp"]
+
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="1_fvxfo"]
+[ext_resource type="PackedScene" uid="uid://cqpb3ie51rwl5" path="res://UI/CustomConsole/custom_console.tscn" id="1_gcnpw"]
+[ext_resource type="PackedScene" uid="uid://v1ei0vhde37" path="res://UI/playertyping.tscn" id="2_beihy"]
+[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="3_inkk8"]
+
+[sub_resource type="Resource" id="Resource_m1uwp"]
+script = ExtResource("3_inkk8")
+scene = ExtResource("2_beihy")
+overrides = {}
+
+[resource]
+script = ExtResource("1_fvxfo")
+name = "Console"
+base_scene = ExtResource("1_gcnpw")
+base_overrides = {
+"global_font": "\"res://fonts/TerminusTTF-4.49.3.ttf\""
+}
+layers = Array[ExtResource("3_inkk8")]([SubResource("Resource_m1uwp")])
+metadata/_latest_layer = -1
