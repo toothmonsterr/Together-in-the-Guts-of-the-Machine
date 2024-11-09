@@ -85,8 +85,8 @@ func _ready() -> void:
 	Engine.register_singleton("DialogueManager", self)
 
 	# Connect up the C# signals if need be
-	if DialogueSettings.has_dotnet_solution():
-		_get_dotnet_dialogue_manager().Prepare()
+	#if DialogueSettings.has_dotnet_solution():
+	#	_get_dotnet_dialogue_manager().Prepare()
 
 
 ## Step through lines and run any mutations until we either hit some dialogue or the end of the conversation
@@ -1156,9 +1156,9 @@ func thing_has_method(thing, method: String, args: Array) -> bool:
 	if thing.has_method(method):
 		return true
 
-	if method.to_snake_case() != method and DialogueSettings.has_dotnet_solution():
+	#if method.to_snake_case() != method and DialogueSettings.has_dotnet_solution():
 		# If we get this far then the method might be a C# method with a Task return type
-		return _get_dotnet_dialogue_manager().ThingHasMethod(thing, method)
+		#return _get_dotnet_dialogue_manager().ThingHasMethod(thing, method)
 
 	return false
 

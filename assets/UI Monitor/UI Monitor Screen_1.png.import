@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://clgmh0vetyudo"
-path.s3tc="res://.godot/imported/UI Monitor screen_1.png-3fd1a078a5cdf8dc864a4774974d4787.s3tc.ctex"
+path.s3tc="res://.godot/imported/UI Monitor Screen_1.png-97d07c24e53bbee6ea0805568d2b2625.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ generator_parameters={}
 
 [deps]
 
-source_file="res://assets/UI Monitor/UI Monitor screen_1.png"
-dest_files=["res://.godot/imported/UI Monitor screen_1.png-3fd1a078a5cdf8dc864a4774974d4787.s3tc.ctex"]
+source_file="res://assets/UI Monitor/UI Monitor Screen_1.png"
+dest_files=["res://.godot/imported/UI Monitor Screen_1.png-97d07c24e53bbee6ea0805568d2b2625.s3tc.ctex"]
 
 [params]
 

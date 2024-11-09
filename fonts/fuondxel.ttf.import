@@ -15,6 +15,7 @@ dest_files=["res://.godot/imported/fuondxel.ttf-ef89d446b4f933f547c0c153938b10a1
 Rendering=null
 antialiasing=0
 generate_mipmaps=false
+disable_embedded_bitmaps=true
 multichannel_signed_distance_field=false
 msdf_pixel_range=8
 msdf_size=48
