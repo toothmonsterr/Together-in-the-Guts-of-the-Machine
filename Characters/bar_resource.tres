@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=2 format=3 uid="uid://bxheu06k3sn66"]
+
+[ext_resource type="Script" path="res://scripts/character_resource.gd" id="1_nmhlc"]
+
+[resource]
+script = ExtResource("1_nmhlc")
+id = "BAR"
+name = "Barren"
+active = null
+flags = null
+sprite_path = "res://Characters/Barren/bar_SpriteFrames.tres"

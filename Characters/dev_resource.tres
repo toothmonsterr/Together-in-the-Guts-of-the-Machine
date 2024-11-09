@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=2 format=3 uid="uid://dvvks4pbxljln"]
+
+[ext_resource type="Script" path="res://scripts/character_resource.gd" id="1_p45kk"]
+
+[resource]
+script = ExtResource("1_p45kk")
+id = "DEV"
+name = "Devion"
+has_portrait = null
+flags = {}
+node_path = "res://Characters/Devion/DEV.tscn"
+sprite_path = "res://Characters/Devion/dev_SpriteFrames.tres"

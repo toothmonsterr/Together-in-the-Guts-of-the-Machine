@@ -1,0 +1,47 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3 uid="uid://dqmrnmx4y3sle"]
+
+[ext_resource type="Texture2D" uid="uid://bras30td4fbtx" path="res://Characters/Barren/sprites/barrentalkfrown/barrenfrown_0000.png" id="1_tup48"]
+[ext_resource type="Texture2D" uid="uid://b6uoq4mtyhd86" path="res://Characters/Barren/sprites/barrentalkfrown/barrenfrown_0001.png" id="2_mvilk"]
+[ext_resource type="Texture2D" uid="uid://ckv47t7uy7ukn" path="res://Characters/Barren/sprites/barrentalkfrown/barrenfrown_0002.png" id="3_wxnf3"]
+[ext_resource type="Texture2D" uid="uid://bxpsw2msx25jj" path="res://Characters/Barren/sprites/barrentalkfrown/barrenfrown_0003.png" id="4_7o4we"]
+[ext_resource type="Texture2D" uid="uid://btrf68orrjxcf" path="res://Characters/Barren/sprites/barrentalkreg/barrentalkreg_0000.png" id="5_vqmlq"]
+[ext_resource type="Texture2D" uid="uid://bb8230fatiemi" path="res://Characters/Barren/sprites/barrentalkreg/barrentalkreg_0001.png" id="6_n2ovl"]
+[ext_resource type="Texture2D" uid="uid://bhn27s142xucx" path="res://Characters/Barren/sprites/barrentalkreg/barrentalkreg_0002.png" id="7_5k8tb"]
+[ext_resource type="Texture2D" uid="uid://b3rftgxms030n" path="res://Characters/Barren/sprites/barrentalkreg/barrentalkreg_0003.png" id="8_23xeq"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_tup48")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_mvilk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_wxnf3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_7o4we")
+}],
+"loop": true,
+"name": &"talk_frown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_vqmlq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_n2ovl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_5k8tb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_23xeq")
+}],
+"loop": true,
+"name": &"talk_reg",
+"speed": 5.0
+}]
